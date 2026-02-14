@@ -10,6 +10,7 @@ import { Layout } from "@/components/layout/Layout";
 import { LoadingScreen } from "@/components/ui/LoadingScreen";
 import { useState, useEffect } from "react";
 import { AuthProvider } from "@/contexts/AuthContext";
+import { ThemeProvider } from "@/components/theme-provider";
 import Index from "./pages/Index";
 import Services from "./pages/Services";
 import Projects from "./pages/Projects";
@@ -81,23 +82,25 @@ const App = () => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <AuthProvider>
-          <div className="overflow-x-hidden w-full">
-            <AnimatePresence mode="wait">
-              {isLoading && <LoadingScreen key="loading-screen" />}
-            </AnimatePresence>
-            <Toaster />
-            <Sonner />
-            <BrowserRouter>
-              <Layout>
-                <AnimatedRoutes />
-              </Layout>
-              <ConditionalChatbot />
-            </BrowserRouter>
-          </div>
-        </AuthProvider>
-      </TooltipProvider>
+      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+        <TooltipProvider>
+          <AuthProvider>
+            <div className="overflow-x-hidden w-full">
+              <AnimatePresence mode="wait">
+                {isLoading && <LoadingScreen key="loading-screen" />}
+              </AnimatePresence>
+              <Toaster />
+              <Sonner />
+              <BrowserRouter>
+                <Layout>
+                  <AnimatedRoutes />
+                </Layout>
+                <ConditionalChatbot />
+              </BrowserRouter>
+            </div>
+          </AuthProvider>
+        </TooltipProvider>
+      </ThemeProvider>
     </QueryClientProvider>
   );
 };

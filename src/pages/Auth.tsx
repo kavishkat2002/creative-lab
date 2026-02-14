@@ -157,7 +157,7 @@ const Auth = () => {
                 Secure Access
               </div>
               <h1 className="font-display text-4xl font-bold mb-4 text-foreground">
-                Join <span className="gradient-text">Creative Lab</span>
+                Join <span className="gradient-text">CLab</span>
               </h1>
               <p className="text-muted-foreground text-lg">
                 Your journey to innovation starts here.

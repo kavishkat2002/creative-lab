@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { HeroScene } from "@/components/three/HeroScene";
 import { useRef, Suspense, useEffect } from "react";
+import { Logo } from "../layout/Logo";
 
 const stats = [
   { value: "01", label: "Years of Experience", suffix: "+" },
@@ -56,8 +57,11 @@ export function HeroSection() {
     offset: ["start start", "end start"],
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const yValue = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const opacityValue = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  
+  const y = useSpring(yValue, { stiffness: 100, damping: 30, restDelta: 0.001 });
+  const opacity = useSpring(opacityValue, { stiffness: 100, damping: 30, restDelta: 0.001 });
 
   return (
     <section
@@ -65,9 +69,10 @@ export function HeroSection() {
       className="relative w-full min-h-[100dvh] md:h-screen flex flex-col bg-navy overflow-x-hidden"
     >
       {/* Gradient background layers */}
-      <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-oxford via-indigo-deep/50 to-oxford" />
-      <div className="absolute inset-0 w-full h-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-sky/20 via-transparent to-transparent" />
-      <div className="absolute inset-0 w-full h-full bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-star/10 via-transparent to-transparent" />
+      {/* Dark midnight background layers */}
+      <div className="absolute inset-0 w-full h-full bg-[#020617]" />
+      <div className="absolute inset-0 w-full h-full bg-[radial-gradient(ellipse_at_top_right,_rgba(14,165,233,0.15),transparent_70%)]" />
+      <div className="absolute inset-0 w-full h-full bg-[radial-gradient(ellipse_at_bottom_left,_rgba(99,102,241,0.1),transparent_70%)]" />
 
       {/* Grid pattern overlay */}
       <div
@@ -89,6 +94,16 @@ export function HeroSection() {
         className="flex-1 flex items-center justify-center w-full px-4 sm:px-6 lg:px-8 xl:px-16 relative z-10 pt-40 pb-12 md:pt-24 md:pb-0"
       >
         <div className="max-w-7xl mx-auto text-center">
+          {/* Brand Logo in Hero */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="flex justify-center mb-8"
+          >
+            <Logo className="scale-150" isLight />
+          </motion.div>
+
           {/* Animated Badge */}
           <motion.div
             initial={{ opacity: 0, y: -20, scale: 0.95 }}
@@ -213,7 +228,7 @@ export function HeroSection() {
                 className="text-center p-3 sm:p-5 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/5 hover:border-sky/30 transition-all cursor-default group flex flex-col justify-center min-h-[90px] sm:min-h-0 min-w-0 overflow-hidden"
               >
                 <AnimatedCounter value={stat.value} suffix={stat.suffix} />
-                <p className="text-[9px] sm:text-xs md:text-sm text-white/50 font-medium mt-1 group-hover:text-white/70 transition-colors uppercase tracking-tight leading-none">
+                <p className="text-[10px] sm:text-xs md:text-sm text-slate-500 font-bold mt-2 group-hover:text-sky transition-colors uppercase tracking-widest leading-none">
                   {stat.label}
                 </p>
               </motion.div>

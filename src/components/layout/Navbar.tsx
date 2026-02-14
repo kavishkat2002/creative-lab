@@ -5,6 +5,7 @@ import { Menu, X, Phone, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ContactSidebar } from "./ContactSidebar";
 import { Logo } from "./Logo";
+import { ModeToggle } from "@/components/ui/mode-toggle";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -104,6 +105,10 @@ export function Navbar() {
 
             {/* CTA Button */}
             <div className="hidden md:flex items-center gap-3 relative z-10">
+              <div className={!shouldShowScrolledState ? "text-white" : ""}>
+                <ModeToggle />
+              </div>
+
               <ContactSidebar
                 trigger={
                   <Button variant="ghost" size="icon" className={`rounded-full transition-colors ${!shouldShowScrolledState && "text-white hover:bg-white/10"}`}>

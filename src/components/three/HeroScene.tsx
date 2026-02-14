@@ -116,7 +116,7 @@ function AnimatedLine({
    NETWORK PARTICLES
 ======================= */
 function NetworkParticles() {
-  const count = 200; // Reduced from 300 for better performance
+  const count = 100; // Optimized from 200 for better mobile/scroll performance
   const mesh = useRef<THREE.InstancedMesh>(null);
 
   const particles = useMemo(() => {
@@ -124,12 +124,11 @@ function NetworkParticles() {
     for (let i = 0; i < count; i++) {
       const t = Math.random() * 100;
       const factor = 20 + Math.random() * 100;
-      const speed = 0.01 + Math.random() / 200;
-      // FIXED: Reduced range from ±50 to ±20 to prevent overflow
+      const speed = 0.005 + Math.random() / 200;
       const x = Math.random() * 40 - 20;
       const y = Math.random() * 40 - 20;
       const z = Math.random() * 40 - 20;
-      temp.push({ t, factor, speed, x, y, z, mx: 0, my: 0 });
+      temp.push({ t, factor, speed, x, y, z });
     }
     return temp;
   }, [count]);
@@ -138,23 +137,27 @@ function NetworkParticles() {
 
   useFrame((state) => {
     if (!mesh.current) return;
+    
+    // Optimization: Cache frequently used values
+    const elapsedTime = state.clock.elapsedTime;
+    
     particles.forEach((particle, i) => {
-      let { t, factor, speed, x, y, z } = particle;
-      t = particle.t += speed / 2;
-      const a = Math.cos(t) + Math.sin(t * 1) / 10;
+      particle.t += particle.speed;
+      const { t, factor, x, y, z } = particle;
+      
+      const a = Math.cos(t) + Math.sin(t) / 10;
       const b = Math.sin(t) + Math.cos(t * 2) / 10;
       const s = Math.cos(t);
 
-      // Update position
+      // Update position with optimized math
       dummy.position.set(
-        (particle.mx / 10) * a + x + Math.cos((t / 10) * factor) + (Math.sin(t * 1) * factor) / 10,
-        (particle.my / 10) * b + y + Math.sin((t / 10) * factor) + (Math.cos(t * 2) * factor) / 10,
-        (particle.my / 10) * b + z + Math.cos((t / 10) * factor) + (Math.sin(t * 3) * factor) / 10
+        x + Math.cos((t / 10) * factor) + (Math.sin(t) * factor) / 10,
+        y + Math.sin((t / 10) * factor) + (Math.cos(t * 2) * factor) / 10,
+        z + Math.cos((t / 10) * factor) + (Math.sin(t * 1.5) * factor) / 10
       );
 
-      // Update scale (pulsing)
       dummy.scale.set(s, s, s);
-      dummy.rotation.set(s * 5, s * 5, s * 5);
+      dummy.rotation.set(s * 2, s * 2, s * 2);
       dummy.updateMatrix();
       mesh.current!.setMatrixAt(i, dummy.matrix);
     });
@@ -164,23 +167,29 @@ function NetworkParticles() {
   return (
     <instancedMesh ref={mesh} args={[undefined, undefined, count]}>
       <dodecahedronGeometry args={[0.05, 0]} />
-      <meshBasicMaterial color="#0077b6" transparent opacity={0.6} />
+      <meshBasicMaterial color="#0077b6" transparent opacity={0.4} />
     </instancedMesh>
   );
 }
 
 /* =======================
-   HERO SCENE (FIXED)
+   HERO SCENE (OPTIMIZED)
 ======================= */
 export function HeroScene() {
   return (
     <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
       <Canvas
         camera={{ position: [0, 0, 15], fov: 60 }}
-        gl={{ antialias: true, alpha: true }}
+        gl={{ 
+          antialias: false, 
+          alpha: true,
+          powerPreference: "high-performance"
+        }}
+        dpr={[1, 1.5]}
+        performance={{ min: 0.5 }}
         style={{ width: "100%", height: "100%" }}
       >
-        <fog attach="fog" args={["#050A18", 10, 30]} />
+        <fog attach="fog" args={["#020617", 10, 30]} />
         <ambientLight intensity={0.4} />
         <pointLight position={[10, 10, 10]} intensity={1} color="#00B4D8" />
         <pointLight position={[-10, -10, -10]} intensity={1.5} color="#03045E" />
@@ -190,18 +199,16 @@ export function HeroScene() {
         <Stars
           radius={60}
           depth={40}
-          count={2500}
+          count={1500}
           factor={3}
           fade
-          speed={0.5}
+          speed={0.3}
         />
 
         <DataStream />
 
         <TechNode position={[4, 2, -6]} color="#00B4D8" speed={0.6} />
         <TechNode position={[-4, -3, -8]} color="#90E0EF" scale={1.4} speed={0.4} />
-        <TechNode position={[5, -4, -10]} color="#03045E" scale={1.8} speed={0.3} />
-        <TechNode position={[-3, 4, -6]} color="#0077B6" scale={0.9} speed={0.8} />
       </Canvas>
     </div>
   );
