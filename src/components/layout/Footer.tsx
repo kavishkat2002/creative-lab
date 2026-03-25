@@ -21,6 +21,7 @@ const footerLinks = {
     { label: "Schedule a Call", href: "/contact" },
     { label: "Partner with us", href: "/contact" },
     { label: "Contact Us", href: "/contact" },
+    { label: "Careers", href: "#", disabled: true },
   ],
 };
 
@@ -90,6 +91,10 @@ export function Footer() {
                     >
                       {link.label}
                     </Link>
+                  ) : link.label === "Careers" ? (
+                    <span className="text-muted-foreground/60 text-sm cursor-default">
+                      {link.label}
+                    </span>
                   ) : (
                     <ContactSidebar trigger={
                       <button

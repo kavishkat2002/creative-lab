@@ -153,13 +153,14 @@ const Services = () => {
               {services.map((service, index) => {
                 const IconComponent = getIconComponent(service.icon);
                 
+                const cleanTitle = service.title.trim();
                 const resolvedImageUrl = service.image_url 
-                  || (service.title === "Custom Software Development" ? "/custom-software.png" : null)
-                  || (service.title === "AI & Machine Learning" ? "/ai-machine-learning.png" : null)
-                  || (service.title === "Mobile App Development" ? "/mobile-app-dev.png" : null)
-                  || (service.title === "Web Development" ? "/web-dev.png" : null)
-                  || (service.title === "Cloud & DevOps" ? "/cloud-devops.png" : null)
-                  || (service.title === "Data & Analytics" ? "/data-analytics.png" : null);
+                  || (cleanTitle.includes("Software") ? "/custom-software.png" : null)
+                  || (cleanTitle.includes("AI") || cleanTitle.includes("Machine") ? "/ai-machine-learning.png" : null)
+                  || (cleanTitle.includes("Mobile") ? "/mobile-app-dev.png" : null)
+                  || (cleanTitle.includes("Web") ? "/web-dev.png" : null)
+                  || (cleanTitle.includes("Cloud") || cleanTitle.includes("DevOps") ? "/cloud-devops.png" : null)
+                  || (cleanTitle.includes("Data") || cleanTitle.includes("Analytics") ? "/data-analytics.png" : null);
 
                 return (
                   <motion.div
@@ -206,6 +207,18 @@ const Services = () => {
                           <img
                             src={resolvedImageUrl}
                             alt={service.title}
+                            onError={(e) => {
+                              // If image fails to load, replace with a nice fallback
+                              const target = e.target as HTMLImageElement;
+                              target.style.display = 'none';
+                              const parent = target.parentElement;
+                              if (parent && !parent.querySelector('.image-fallback')) {
+                                const fallback = document.createElement('div');
+                                fallback.className = 'image-fallback w-full aspect-[4/3] flex items-center justify-center bg-gradient-to-br from-primary/10 to-sky/10';
+                                fallback.innerHTML = `<svg class="w-24 h-24 text-primary/20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect><circle cx="9" cy="9" r="2"></circle><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"></path></svg>`;
+                                parent.appendChild(fallback);
+                              }
+                            }}
                             className="w-full h-full object-cover aspect-[4/3] transform group-hover:scale-110 transition-transform duration-700"
                           />
                         ) : (
