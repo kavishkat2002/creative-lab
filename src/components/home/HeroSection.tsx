@@ -147,7 +147,7 @@ export function HeroSection() {
                   size="lg"
                   className="btn-gradient text-white border-0 rounded-full px-6 py-5 md:px-8 md:py-6 text-sm md:text-base font-semibold group hover:shadow-lg hover:shadow-sky/25 transition-all w-full sm:w-auto"
                 >
-                  Get a Free Consultation
+                  Book a Free Consultation
                   <motion.span
                     className="ml-2"
                     animate={{ x: [0, 5, 0] }}
@@ -158,7 +158,7 @@ export function HeroSection() {
                 </Button>
               </motion.div>
             </Link>
-            <Link to="/projects">
+            <Link to="/contact">
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -168,8 +168,7 @@ export function HeroSection() {
                   variant="outline"
                   className="rounded-full px-6 py-5 md:px-8 md:py-6 text-sm md:text-base font-semibold bg-white/5 border-white/20 text-white hover:bg-white/10 hover:text-white backdrop-blur-sm w-full sm:w-auto"
                 >
-                  <Sparkles className="w-3.5 h-3.5 md:w-4 md:h-4 mr-2 fill-current" />
-                  Explore Portfolio
+                  Request a Demo
                 </Button>
               </motion.div>
             </Link>
