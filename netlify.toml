@@ -1,6 +1,5 @@
-/* Redirect all routes to index.html for React Router */
-/* This prevents 404s on refresh and white screens on sub-pages */
-/* For Netlify/Vercel/Cloudflare style deployment */
+# Netlify Configuration File
+# Redirect all routes to index.html for Single Page Application routing (React Router)
 
 [[redirects]]
   from = "/*"
