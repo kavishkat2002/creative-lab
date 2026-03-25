@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Linkedin, Twitter, Mail, Facebook, Instagram, ArrowUpRight } from "lucide-react";
 import { Logo } from "./Logo";
+import { ContactSidebar } from "./ContactSidebar";
 
 const footerLinks = {
   quickLinks: [
@@ -82,12 +83,22 @@ export function Footer() {
             <ul className="space-y-4">
               {footerLinks.connect.map((link) => (
                 <li key={link.label}>
-                  <Link
-                    to={link.href}
-                    className="text-muted-foreground hover:text-coral text-sm transition-colors inline-flex items-center gap-1 group"
-                  >
-                    {link.label}
-                  </Link>
+                  {link.label === "Schedule a Call" ? (
+                    <Link
+                      to="/contact#contact-form"
+                      className="text-muted-foreground hover:text-coral text-sm transition-colors inline-flex items-center gap-1 group"
+                    >
+                      {link.label}
+                    </Link>
+                  ) : (
+                    <ContactSidebar trigger={
+                      <button
+                        className="text-muted-foreground hover:text-coral text-sm transition-colors inline-flex items-center gap-1 group"
+                      >
+                        {link.label}
+                      </button>
+                    } />
+                  )}
                 </li>
               ))}
             </ul>

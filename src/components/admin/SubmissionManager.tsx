@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Calendar, User, MessageSquare, Trash2, Loader2, Shield } from "lucide-react";
+import { Mail, Calendar, User, MessageSquare, Trash2, Loader2, Shield, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
@@ -25,6 +25,8 @@ interface ContactSubmission {
     subject: string;
     message: string;
     created_at: string;
+    scheduled_date?: string;
+    scheduled_time?: string;
 }
 
 export const SubmissionManager = () => {
@@ -146,6 +148,12 @@ export const SubmissionManager = () => {
                                                     <Calendar className="w-3.5 h-3.5" />
                                                     {formatDate(submission.created_at)}
                                                 </span>
+                                                {(submission.scheduled_date || submission.scheduled_time) && (
+                                                    <span className="flex items-center gap-1.5 px-2 py-0.5 bg-sky/10 text-sky rounded-md font-semibold animate-pulse">
+                                                        <Clock className="w-3.5 h-3.5" />
+                                                        Meeting: {submission.scheduled_date || "Any date"} at {submission.scheduled_time || "Any time"}
+                                                    </span>
+                                                )}
                                             </div>
                                         </div>
 

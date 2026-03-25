@@ -25,7 +25,7 @@ export function CTASection() {
               Ready to elevate your brand with cutting-edge solutions? Schedule
               a call with our experts and take the first step toward success!
             </p>
-            <Link to="/contact">
+            <Link to="/contact#contact-form">
               <Button
                 size="lg"
                 className="rounded-full px-8 py-6 bg-white text-oxford hover:bg-white/90 font-bold transition-all hover:scale-105 active:scale-95"
@@ -76,7 +76,7 @@ export function CTASection() {
                 </div>
               </div>
               {/* Floating element - now clipped by parent overflow */}
-              <Link to="/contact">
+              <Link to="/contact#contact-form">
                 <div className="absolute -right-4 top-8 bg-white rounded-2xl shadow-2xl p-4 border border-border transition-all hover:-rotate-2 hover:scale-105 hover:shadow-sky/20 cursor-pointer">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full bg-sky/10 flex items-center justify-center">

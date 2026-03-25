@@ -138,7 +138,7 @@ export function HeroSection() {
             transition={{ duration: 0.5, delay: 0.4 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4 px-4"
           >
-            <Link to="/contact">
+            <Link to="/contact#contact-form">
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -158,7 +158,7 @@ export function HeroSection() {
                 </Button>
               </motion.div>
             </Link>
-            <Link to="/contact">
+            <Link to="/contact#contact-form">
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}

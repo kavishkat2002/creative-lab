@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Send, CheckCircle, MessageCircle } from "lucide-react";
 import { useForm } from "react-hook-form";
@@ -18,6 +19,8 @@ const formSchema = z.object({
   email: z.string().email("Please enter a valid email"),
   subject: z.string().min(5, "Please enter a subject"),
   message: z.string().min(20, "Please tell us a bit more about your project"),
+  scheduled_date: z.string().optional(),
+  scheduled_time: z.string().optional(),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -26,9 +29,9 @@ const contactInfo = [
   {
     icon: Mail,
     label: "Email us",
-    value: "contact@creativexlab.online",
+    value: "info@creativexlab.online",
     description: "We'll respond within 24 hours",
-    href: "mailto:contact@creativexlab.online",
+    href: "mailto:info@creativexlab.online",
   },
   {
     icon: Phone,
@@ -50,6 +53,18 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const { toast } = useToast();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const element = document.querySelector(location.hash);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: "smooth" });
+        }, 300); // Small delay to ensure render is complete
+      }
+    }
+  }, [location.hash]);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -58,6 +73,8 @@ const Contact = () => {
       email: "",
       subject: "",
       message: "",
+      scheduled_date: "",
+      scheduled_time: "",
     },
   });
 
@@ -69,6 +86,8 @@ const Contact = () => {
         email: data.email,
         subject: data.subject,
         message: data.message,
+        scheduled_date: data.scheduled_date || null,
+        scheduled_time: data.scheduled_time || null,
       });
 
       if (error) throw error;
@@ -83,7 +102,7 @@ const Contact = () => {
       console.error("Error submitting form:", error);
       toast({
         title: "Something went wrong",
-        description: "Please try again or email us directly.",
+        description: error instanceof Error ? error.message : "Please try again or email us directly.",
         variant: "destructive",
       });
     } finally {
@@ -163,6 +182,7 @@ const Contact = () => {
 
             {/* Contact Form */}
             <motion.div
+              id="contact-form"
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -243,6 +263,49 @@ const Contact = () => {
                           </FormItem>
                         )}
                       />
+
+                      <div className="grid sm:grid-cols-2 gap-4">
+                        <FormField
+                          control={form.control}
+                          name="scheduled_date"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Preferred Meeting Date</FormLabel>
+                              <FormControl>
+                                <Input type="date" {...field} className="rounded-lg" min={new Date().toISOString().split('T')[0]} />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        <FormField
+                          control={form.control}
+                          name="scheduled_time"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Preferred Meeting Time (7 PM - 11 PM)</FormLabel>
+                              <FormControl>
+                                <select 
+                                  {...field} 
+                                  className="flex h-10 w-full rounded-lg border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                >
+                                  <option value="">Select a time</option>
+                                  <option value="07:00 PM">07:00 PM</option>
+                                  <option value="07:30 PM">07:30 PM</option>
+                                  <option value="08:00 PM">08:00 PM</option>
+                                  <option value="08:30 PM">08:30 PM</option>
+                                  <option value="09:00 PM">09:00 PM</option>
+                                  <option value="09:30 PM">09:30 PM</option>
+                                  <option value="10:00 PM">10:00 PM</option>
+                                  <option value="10:30 PM">10:30 PM</option>
+                                  <option value="11:00 PM">11:00 PM</option>
+                                </select>
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
 
                       <FormField
                         control={form.control}

@@ -119,7 +119,7 @@ export function Navbar() {
 
               <Link to="/contact">
                 <Button className="rounded-full px-6 py-5 font-bold shadow-lg shadow-sky/20 hover:shadow-sky/40 hover:-translate-y-0.5 transition-all duration-300 bg-gradient-to-r from-sky to-star border-0 text-white">
-                  Get Started
+                  Book a Call
                   <ChevronRight className="w-4 h-4 ml-1" />
                 </Button>
               </Link>
@@ -181,7 +181,7 @@ export function Navbar() {
 
                 <Link to="/contact" onClick={() => setIsOpen(false)}>
                   <Button className="w-full rounded-xl font-bold bg-gradient-to-r from-sky to-star text-white border-0 shadow-lg shadow-sky/20">
-                    Get Started
+                    Book a Call
                   </Button>
                 </Link>
               </div>
