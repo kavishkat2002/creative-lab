@@ -178,7 +178,7 @@ export function AIChatbot() {
             className="fixed bottom-6 right-6 z-50 w-[380px] max-w-[calc(100vw-3rem)] h-[500px] max-h-[calc(100vh-6rem)] bg-card rounded-2xl shadow-2xl border border-border flex flex-col overflow-hidden"
           >
             {/* Header */}
-            <div className="flex items-center justify-between p-5 border-b border-white/10 bg-oxford text-white">
+            <div className="flex items-center justify-between p-5 border-b border-white/10 bg-oxford dark:bg-black text-white">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center">
                   <Bot className="w-5 h-5 text-sky" />

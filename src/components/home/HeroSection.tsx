@@ -70,7 +70,7 @@ export function HeroSection() {
     >
       {/* Gradient background layers */}
       {/* Dark midnight background layers */}
-      <div className="absolute inset-0 w-full h-full bg-[#020617]" />
+      <div className="absolute inset-0 w-full h-full bg-black" />
       <div className="absolute inset-0 w-full h-full bg-[radial-gradient(ellipse_at_top_right,_rgba(14,165,233,0.15),transparent_70%)]" />
       <div className="absolute inset-0 w-full h-full bg-[radial-gradient(ellipse_at_bottom_left,_rgba(99,102,241,0.1),transparent_70%)]" />
 

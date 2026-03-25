@@ -135,7 +135,7 @@ export function ContactSidebar({ trigger }: ContactSidebarProps) {
                   >
                     <item.icon className="w-6 h-6 text-star group-hover:text-white transition-colors" />
                   </motion.div>
-                  <h3 className="font-display text-lg font-bold text-oxford mb-1">
+                  <h3 className="font-display text-lg font-bold text-foreground mb-1">
                     {item.title}
                   </h3>
                   <p className="text-sm font-medium text-muted-foreground group-hover:text-star transition-colors">

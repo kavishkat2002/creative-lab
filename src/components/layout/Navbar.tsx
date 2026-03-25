@@ -51,7 +51,7 @@ export function Navbar() {
         }}
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }} // smooth easeOutExpo-like
         className={`pointer-events-auto backdrop-blur-2xl transition-all duration-500 rounded-3xl ${shouldShowScrolledState
-          ? "bg-white/95 dark:bg-slate-900/95 shadow-2xl shadow-oxford/20 border border-white/30"
+          ? "bg-white/95 dark:bg-black/95 shadow-2xl shadow-oxford/20 border border-white/30"
           : "bg-transparent border-transparent"
           }`}
       >
@@ -76,8 +76,8 @@ export function Navbar() {
                     onMouseEnter={() => setHoveredHash(link.href)}
                     onMouseLeave={() => setHoveredHash(null)}
                     className={`relative px-5 py-2.5 text-sm font-semibold rounded-full transition-all duration-300 z-10 ${isActive
-                      ? (shouldShowScrolledState ? "text-oxford" : "text-white")
-                      : (shouldShowScrolledState ? "text-slate-600 hover:text-oxford" : "text-slate-300 hover:text-white")
+                      ? (shouldShowScrolledState ? "text-oxford dark:text-white" : "text-white")
+                      : (shouldShowScrolledState ? "text-slate-600 dark:text-slate-300 hover:text-oxford dark:hover:text-white" : "text-slate-300 hover:text-white")
                       }`}
                   >
                     {isActive && (
@@ -128,7 +128,7 @@ export function Navbar() {
             {/* Mobile Menu Button - Enhanced Tap Target */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className={`md:hidden p-3 rounded-xl transition-colors active:scale-95 ${shouldShowScrolledState ? "hover:bg-slate-100 text-slate-900" : "hover:bg-white/10 text-white"
+              className={`md:hidden p-3 rounded-xl transition-colors active:scale-95 ${shouldShowScrolledState ? "hover:bg-slate-100 dark:hover:bg-white/10 text-slate-900 dark:text-white" : "hover:bg-white/10 text-white"
                 }`}
               aria-label="Toggle Navigation Menu"
             >
@@ -166,7 +166,7 @@ export function Navbar() {
                     className={`flex items-center justify-between px-5 py-4 rounded-2xl text-[15px] font-bold transition-all active:scale-95 ${location.pathname === link.href
                       ? "bg-gradient-to-r from-sky/20 to-star/20 text-sky"
                       : shouldShowScrolledState
-                        ? "text-slate-600 hover:bg-slate-100"
+                        ? "text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/10 hover:text-oxford dark:hover:text-white"
                         : "text-white/70 hover:bg-white/10 hover:text-white"
                       }`}
                   >
