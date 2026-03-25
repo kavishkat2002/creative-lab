@@ -26,9 +26,9 @@ const contactInfo = [
   {
     icon: Mail,
     label: "Email us",
-    value: "info.creativelab@gmail.com",
+    value: "contact@creativexlab.online",
     description: "We'll respond within 24 hours",
-    href: "mailto:info.creativelab@gmail.com",
+    href: "mailto:contact@creativexlab.online",
   },
   {
     icon: Phone,

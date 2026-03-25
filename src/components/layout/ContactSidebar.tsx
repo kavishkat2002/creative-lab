@@ -71,8 +71,8 @@ export function ContactSidebar({ trigger }: ContactSidebarProps) {
     {
       icon: Mail,
       title: "Email Address",
-      value: "info.creativelab@gmail.com",
-      href: "mailto:info.creativelab@gmail.com",
+      value: "contact@creativexlab.online",
+      href: "mailto:contact@creativexlab.online",
     },
     {
       icon: Headphones,
