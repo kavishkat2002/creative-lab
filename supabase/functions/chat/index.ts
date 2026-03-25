@@ -67,7 +67,11 @@ serve(async (req) => {
 
         if (!aiResponse.ok || !aiResponse.body) {
             const errorText = await aiResponse.text();
-            throw new Error(errorText);
+            console.error("AI Provider error:", errorText);
+            return new Response(
+                JSON.stringify({ error: `AI provider error: ${errorText}` }),
+                { status: aiResponse.status, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+            );
         }
 
         return new Response(aiResponse.body, {
