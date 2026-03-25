@@ -18,7 +18,7 @@ export function AIChatbot() {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "assistant",
-      content: "Hi there! 👋 I'm CRETO, your AI assistant. I'm here to help answer any questions about Creative Lab. What can I help you with today?",
+      content: "Hi there! 👋 I'm CRETO, your AI assistant. I'm here to help answer any questions about Creativex Technology. What can I help you with today?",
     },
   ]);
   const [input, setInput] = useState("");
@@ -130,19 +130,31 @@ export function AIChatbot() {
   return (
     <>
       {/* Floating Button */}
-      <motion.button
-        onClick={() => setIsOpen(true)}
-        className={`fixed bottom-4 right-4 z-50 w-32 h-32 bg-transparent shadow-none border-none p-0 ${isOpen ? "hidden" : "flex"
-          } items-center justify-center hover:scale-105 transition-transform`}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
+      <motion.div
+        className={`fixed bottom-6 right-6 z-50 flex items-center gap-4 ${isOpen ? "hidden" : "flex"}`}
       >
-        <DotLottieReact
-          src="https://lottie.host/cb04ebd8-4f17-46bc-a9e4-6263b39c0c0e/19XLBp2dnl.lottie"
-          loop
-          autoplay
-        />
-      </motion.button>
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 1 }}
+          className="hidden md:block bg-card px-4 py-2 rounded-2xl shadow-xl border border-border text-sm font-semibold text-foreground whitespace-nowrap"
+        >
+          Have questions? Chat with CRETO! 👋
+        </motion.div>
+        <motion.button
+          onClick={() => setIsOpen(true)}
+          className="w-20 h-20 md:w-24 md:h-24 bg-transparent shadow-none border-none p-0 flex items-center justify-center hover:scale-110 transition-transform relative group"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+        >
+          <div className="absolute inset-4 bg-sky/20 rounded-full blur-xl group-hover:bg-sky/30 transition-all" />
+          <DotLottieReact
+            src="https://lottie.host/cb04ebd8-4f17-46bc-a9e4-6263b39c0c0e/19XLBp2dnl.lottie"
+            loop
+            autoplay
+          />
+        </motion.button>
+      </motion.div>
 
       {/* Chat Window */}
       <AnimatePresence>

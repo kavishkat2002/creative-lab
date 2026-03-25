@@ -94,36 +94,6 @@ export function HeroSection() {
         className="flex-1 flex items-center justify-center w-full px-4 sm:px-6 lg:px-8 xl:px-16 relative z-10 pt-40 pb-12 md:pt-24 md:pb-0"
       >
         <div className="max-w-7xl mx-auto text-center">
-          {/* Brand Logo in Hero */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="flex justify-center mb-8"
-          >
-            <Logo className="scale-150" isLight />
-          </motion.div>
-
-          {/* Animated Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: -20, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 sm:px-6 sm:py-2 rounded-full bg-white/5 border border-cyan-400/30 backdrop-blur-xl mb-8 group hover:bg-white/10 transition-all duration-300 shadow-[0_0_20px_rgba(0,255,255,0.15)] hover:shadow-[0_0_30px_rgba(0,255,255,0.3)] cursor-default max-w-[min(calc(100vw-2rem),max-content)]"
-          >
-            <motion.div
-              animate={{
-                scale: [1, 1.2, 1],
-                opacity: [0.5, 1, 0.5]
-              }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-cyan-400 shadow-[0_0_10px_#22d3ee] shrink-0"
-            />
-            <span className="text-[10px] sm:text-sm font-semibold tracking-wider text-cyan-100/90 uppercase whitespace-nowrap">
-              Design . Develop . Deploy . Scale
-            </span>
-          </motion.div>
-
           {/* Main Heading with 3D effect */}
           <motion.h1
             initial={{ opacity: 0, y: 40 }}
@@ -134,7 +104,7 @@ export function HeroSection() {
             <span className="text-white/90">Empowering</span>
             <br />
             <span
-              className="relative inline-block mt-3 text-white/95"
+              className="relative inline-block mt-3 text-white/95 bracket-heading"
               style={{
                 textShadow: `
                   1px 1px 0 rgba(100, 116, 139, 0.3),
@@ -188,7 +158,7 @@ export function HeroSection() {
                 </Button>
               </motion.div>
             </Link>
-            <Link to="/contact">
+            <Link to="/projects">
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -198,8 +168,8 @@ export function HeroSection() {
                   variant="outline"
                   className="rounded-full px-6 py-5 md:px-8 md:py-6 text-sm md:text-base font-semibold bg-white/5 border-white/20 text-white hover:bg-white/10 hover:text-white backdrop-blur-sm w-full sm:w-auto"
                 >
-                  <Play className="w-3.5 h-3.5 md:w-4 md:h-4 mr-2 fill-current" />
-                  Watch Showreel
+                  <Sparkles className="w-3.5 h-3.5 md:w-4 md:h-4 mr-2 fill-current" />
+                  Explore Portfolio
                 </Button>
               </motion.div>
             </Link>
@@ -216,19 +186,19 @@ export function HeroSection() {
         className="relative z-10 border-t border-white/5 w-full flex-shrink-0 mt-auto pb-12"
       >
         <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-16 py-8 md:py-6">
-          <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6">
+          <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             {stats.map((stat, index) => (
               <motion.div
                 key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                whileHover={{ scale: 1.05, y: -5 }}
-                className="text-center p-3 sm:p-5 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/5 hover:border-sky/30 transition-all cursor-default group flex flex-col justify-center min-h-[90px] sm:min-h-0 min-w-0 overflow-hidden"
+                initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                whileHover={{ scale: 1.05, y: -8 }}
+                className="text-center p-4 sm:p-6 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 hover:border-sky/40 transition-all duration-300 hover:shadow-xl hover:shadow-sky/10 hover:bg-white/10 cursor-default group flex flex-col justify-center min-h-[100px] sm:min-h-[120px] overflow-hidden"
               >
                 <AnimatedCounter value={stat.value} suffix={stat.suffix} />
-                <p className="text-[10px] sm:text-xs md:text-sm text-slate-500 font-bold mt-2 group-hover:text-sky transition-colors uppercase tracking-widest leading-none">
+                <p className="text-[10px] sm:text-xs md:text-sm text-slate-300 font-bold mt-2 md:mt-3 group-hover:text-white transition-colors uppercase tracking-widest leading-tight">
                   {stat.label}
                 </p>
               </motion.div>

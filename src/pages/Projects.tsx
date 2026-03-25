@@ -5,6 +5,7 @@ import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from
 import { supabase } from "@/integrations/supabase/client";
 import { Loader2, ExternalLink, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { SEO } from "@/components/SEO";
 import { Link } from "react-router-dom";
 
 interface Project {
@@ -71,18 +72,17 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
         rotateX,
         transformStyle: "preserve-3d",
       }}
-      className="group relative h-full perspective-1000 min-h-[400px]"
+      className="group relative h-full perspective-1000 min-h-[350px]"
     >
       <div
-        className="h-full rounded-2xl overflow-hidden bg-white/5 border border-white/10 backdrop-blur-sm shadow-xl hover:shadow-primary/5 transition-all duration-300 flex flex-col"
+        className="h-full rounded-2xl overflow-hidden bg-card border border-border shadow-soft hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col"
         style={{ transform: "translateZ(20px)" }}
       >
-        <div className="relative aspect-[4/3] overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent z-10 opacity-80" />
+        <div className="relative aspect-video overflow-hidden bg-slate-100 dark:bg-slate-900">
           {project.image_url.includes('/video/') || project.image_url.endsWith('.mp4') ? (
             <video
               src={project.image_url}
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
               muted
               loop
               playsInline
@@ -93,7 +93,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
             <img
               src={project.image_url}
               alt={project.title}
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
             />
           )}
 
@@ -104,15 +104,15 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
           </div>
         </div>
 
-        <div className="p-6 flex flex-col flex-grow relative z-20 -mt-12">
-          <h3 className="font-display text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
+        <div className="p-5 md:p-6 flex flex-col flex-grow relative z-20 bg-card">
+          <h3 className="font-display text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
             {project.title}
           </h3>
-          <p className="text-sm text-muted-foreground line-clamp-3 mb-6 leading-relaxed">
+          <p className="text-sm text-muted-foreground line-clamp-2 md:line-clamp-3 mb-4 leading-relaxed">
             {project.description}
           </p>
 
-          <div className="mt-auto flex items-center justify-between pt-4 border-t border-white/5">
+          <div className="mt-auto flex items-center justify-between pt-4 border-t border-border">
             {project.project_url ? (
               <a
                 href={project.project_url}
@@ -176,6 +176,11 @@ const Projects = () => {
 
   return (
     <>
+      <SEO 
+        title="Portfolio & Case Studies | Creativex Technology"
+        description="Discover our latest AI products, scalable web apps, and enterprise software solutions. See how we drive digital transformation for global clients."
+        url="https://creativex.technology/projects"
+      />
       <section className="py-24 pt-32 min-h-screen relative overflow-hidden">
         {/* Ambient Background */}
         <div className="absolute top-20 left-10 w-96 h-96 bg-primary/10 rounded-full blur-[128px] -z-10" />

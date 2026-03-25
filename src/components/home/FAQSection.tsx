@@ -8,7 +8,7 @@ import {
 
 const faqs = [
   {
-    question: "What services does Creative Lab offer?",
+    question: "What services does Creativex Technology offer?",
     answer: "We offer comprehensive digital solutions including custom software development, AI/ML solutions, web and mobile app development, cloud infrastructure, data analytics, and ongoing technical support.",
   },
   {

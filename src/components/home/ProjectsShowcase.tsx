@@ -53,10 +53,10 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.4, delay: index * 0.1 }}
+      initial={{ opacity: 0, scale: 0.95, y: 30 }}
+      whileInView={{ opacity: 1, scale: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.5, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{
@@ -78,7 +78,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
           {project.image_url.includes('/video/') || project.image_url.endsWith('.mp4') ? (
             <video
               src={project.image_url}
-              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700"
               muted
               loop
               playsInline
@@ -89,7 +89,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
             <img
               src={project.image_url}
               alt={project.title}
-              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700"
             />
           )}
 
@@ -102,12 +102,12 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
         </div>
 
         {/* Content Section */}
-        <div className="p-6 flex flex-col flex-grow" style={{ transform: "translateZ(20px)" }}>
-          <div className="mb-4">
-            <h3 className="font-display text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
+        <div className="p-5 md:p-6 flex flex-col flex-grow" style={{ transform: "translateZ(20px)" }}>
+          <div className="mb-3">
+            <h3 className="font-display text-[1rem] md:text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
               {project.title}
             </h3>
-            <p className="text-sm text-muted-foreground line-clamp-3 leading-relaxed">
+            <p className="text-sm text-muted-foreground line-clamp-2 leading-relaxed">
               {project.description}
             </p>
           </div>
@@ -187,7 +187,7 @@ export function ProjectsShowcase() {
         </motion.div>
 
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-8 mb-12">
           {projects.map((project, index) => (
             <ProjectCard key={project.id} project={project} index={index} />
           ))}

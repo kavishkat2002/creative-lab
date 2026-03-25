@@ -60,7 +60,7 @@ export function WhyChooseUs() {
           viewport={{ once: true }}
           className="max-w-3xl mb-16"
         >
-          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
+          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 bracket-heading">
             Why Leading Brands{" "}
             <span className="gradient-text">Choose Us</span>
           </h2>
@@ -70,15 +70,15 @@ export function WhyChooseUs() {
         </motion.div>
 
         {/* Reasons Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
           {reasons.map((reason, index) => (
             <motion.div
               key={reason.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
-              className="bg-white/[0.08] backdrop-blur-md border border-white/20 rounded-3xl p-8 hover:border-sky/50 transition-all hover:bg-white/[0.12] hover:shadow-2xl hover:shadow-sky/20 group"
+              initial={{ opacity: 0, scale: 0.95, y: 30 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+              className="bg-white/[0.08] backdrop-blur-md border border-white/20 rounded-3xl p-6 md:p-8 hover:border-sky/50 transition-all hover:bg-white/[0.12] hover:shadow-2xl hover:shadow-sky/20 group"
             >
               <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-sky/30 to-star/30 border border-sky/30 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:shadow-xl group-hover:shadow-sky/40 transition-all duration-300">
                 <reason.icon className="w-7 h-7 text-sky group-hover:text-white" strokeWidth={2} />

@@ -60,6 +60,10 @@ export default {
           deep: "hsl(var(--indigo-deep))",
           soft: "hsl(var(--indigo-soft))",
         },
+        navy: {
+          DEFAULT: "hsl(var(--navy))",
+          light: "hsl(var(--navy-light))",
+        },
         amber: "hsl(var(--amber))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",

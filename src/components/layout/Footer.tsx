@@ -117,7 +117,7 @@ export function Footer() {
         <div className="container mx-auto px-4 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center">
             <p className="text-sm text-muted-foreground">
-              © {new Date().getFullYear()} Creative Lab. All rights reserved
+              © {new Date().getFullYear()} Creativex Technology. All rights reserved
               <Link
                 to="/auth"
                 className="hover:text-star transition-colors cursor-default ml-[1px]"

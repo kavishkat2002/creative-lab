@@ -8,87 +8,87 @@
 
 @layer base {
   :root {
-    /* Light mode - Clean white sections */
-    --background: 192 85% 98%;
-    --foreground: 237 94% 19%;
+    /* Light mode - Logo Blue themed white */
+    --background: 217 30% 98%;
+    --foreground: 217 100% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 237 94% 19%;
+    --card-foreground: 217 100% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 237 94% 19%;
+    --popover-foreground: 217 100% 15%;
 
-    /* Oxford Blue primary */
-    --primary: 237 94% 19%;
+    /* Logo Blue primary */
+    --primary: 217 85% 34%;
     --primary-foreground: 0 0% 100%;
 
-    /* Star Command Blue secondary */
-    --secondary: 201 100% 96%;
-    --secondary-foreground: 201 100% 36%;
+    /* Logo Blue secondary */
+    --secondary: 217 85% 96%;
+    --secondary-foreground: 217 85% 34%;
 
-    --muted: 201 100% 96%;
-    --muted-foreground: 201 40% 46%;
+    --muted: 217 85% 96%;
+    --muted-foreground: 217 40% 46%;
 
-    /* Sky Blue accent */
-    --accent: 192 100% 42%;
+    /* Logo Blue accent */
+    --accent: 217 85% 45%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 192 73% 85%;
-    --input: 192 73% 85%;
-    --ring: 192 100% 42%;
+    --border: 217 73% 85%;
+    --input: 217 73% 85%;
+    --ring: 217 85% 34%;
 
     --radius: 1rem;
 
-    /* Custom blue palette */
-    --oxford: 237 94% 19%;
-    --star: 201 100% 36%;
-    --sky: 192 100% 42%;
-    --cyan-light: 192 73% 75%;
-    --cyan-soft: 192 85% 95%;
-    --indigo-deep: 246 46% 37%;
-    --indigo-soft: 239 77% 70%;
-    --amber: 45 99% 49%;
+    /* Custom blue palette from logo */
+    --oxford: 217 85% 25%;
+    --star: 217 85% 34%;
+    --sky: 217 85% 34%;
+    --cyan-light: 217 73% 75%;
+    --cyan-soft: 217 85% 95%;
+    --indigo-deep: 217 60% 30%;
+    --indigo-soft: 217 80% 65%;
+    --amber: 35 100% 50%; /* Adjusted for better contrast with blue */
 
-    /* Backwards compatibility for existing class names but with new colors */
-    --coral: 192 100% 42%;
-    --coral-light: 192 73% 75%;
-    --navy: 237 94% 19%;
-    --navy-light: 201 100% 36%;
+    /* Backwards compatibility */
+    --coral: 217 85% 34%;
+    --coral-light: 217 73% 75%;
+    --navy: 217 85% 34%;
+    --navy-light: 217 85% 34%;
 
     /* Sidebar */
-    --sidebar-background: 237 94% 19%;
-    --sidebar-foreground: 192 85% 95%;
-    --sidebar-primary: 192 100% 42%;
+    --sidebar-background: 217 85% 20%;
+    --sidebar-foreground: 217 85% 95%;
+    --sidebar-primary: 217 85% 45%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 246 46% 37%;
+    --sidebar-accent: 217 60% 30%;
     --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 237 94% 25%;
-    --sidebar-ring: 239 77% 70%;
+    --sidebar-border: 217 85% 25%;
+    --sidebar-ring: 217 85% 55%;
   }
 
   .dark {
-    --background: 237 94% 6%;
-    --foreground: 192 85% 95%;
-    --card: 237 94% 8%;
-    --card-foreground: 192 85% 95%;
-    --popover: 237 94% 8%;
-    --popover-foreground: 192 85% 95%;
-    --primary: 239 77% 70%;
-    --primary-foreground: 237 94% 19%;
-    --secondary: 246 46% 15%;
-    --secondary-foreground: 192 85% 95%;
-    --muted: 246 46% 12%;
-    --muted-foreground: 201 40% 65%;
-    --accent: 192 100% 42%;
+    --background: 217 100% 6%;
+    --foreground: 217 30% 95%;
+    --card: 217 100% 8%;
+    --card-foreground: 217 30% 95%;
+    --popover: 217 100% 8%;
+    --popover-foreground: 217 30% 95%;
+    --primary: 217 85% 65%;
+    --primary-foreground: 217 100% 15%;
+    --secondary: 217 60% 15%;
+    --secondary-foreground: 217 30% 95%;
+    --muted: 217 60% 12%;
+    --muted-foreground: 217 40% 65%;
+    --accent: 217 85% 45%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 62% 50%;
     --destructive-foreground: 0 0% 100%;
-    --border: 237 94% 15%;
-    --input: 237 94% 15%;
-    --ring: 239 77% 70%;
+    --border: 217 94% 15%;
+    --input: 217 94% 15%;
+    --ring: 217 100% 65%;
   }
 }
 
@@ -107,6 +107,7 @@
     width: 100%;
     margin: 0;
     padding: 0;
+    scroll-behavior: smooth;
   }
 
   body {
@@ -144,10 +145,18 @@
     width: 0;
   }
 
+  /* Core page settings to prevent useless horizontal scroll jank */
+  html, body {
+    overflow-x: hidden;
+    width: 100vw;
+    position: relative;
+    max-width: 100%;
+  }
+
   /* Firefox */
   html {
-    scrollbar-width: thin;
-    scrollbar-color: hsl(var(--muted-foreground) / 0.3) transparent;
+    scrollbar-width: none;
+    -ms-overflow-style: none; /* IE and Edge */
   }
 
   html::-moz-scrollbar {
@@ -183,26 +192,19 @@
     letter-spacing: -0.02em;
   }
 
-  /* Ensure containers don't cause overflow */
+  /* Let text confidently wrap on mobile instead of forcing harsh clipping */
   .container,
   .wrapper,
   main {
-    max-width: 100%;
-    overflow-x: hidden;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
   }
-
-  /* Nuclear option - force all elements to respect viewport */
-  div,
-  section,
-  nav,
-  header,
-  footer {
-    max-width: 100%;
-  }
-
-  /* Prevent any absolutely positioned elements from causing overflow */
-  [class*="absolute"] {
-    max-width: 100%;
+  
+  h1, h2, h3, h4, h5, h6, p {
+    overflow-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
   }
 }
 
@@ -267,13 +269,19 @@
 
   /* Card hover effect */
   .card-hover {
-    transition: all 500ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 400ms cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .card-hover:hover {
-    transform: translateY(-0.5rem);
-    border-color: hsl(var(--primary) / 0.3);
-    box-shadow: 0 25px 50px -12px hsl(var(--oxford) / 0.2);
+    transform: translateY(-0.25rem) scale(1.01);
+    border-color: hsl(var(--primary) / 0.4);
+    box-shadow: 0 20px 40px -12px hsl(var(--oxford) / 0.15),
+                0 0 20px -5px hsl(var(--primary) / 0.1);
+  }
+
+  /* Soft shadow for images and prominent containers */
+  .shadow-soft {
+    box-shadow: 0 10px 40px -10px hsl(var(--oxford) / 0.08);
   }
 
   /* Dark section */
@@ -383,23 +391,11 @@
   }
 }
 
-/* Custom scrollbar */
+/* Custom scrollbar - Hidden globally */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: hsl(var(--muted));
-}
-
-::-webkit-scrollbar-thumb {
-  background: hsl(var(--muted-foreground) / 0.3);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--muted-foreground) / 0.5);
+  width: 0;
+  height: 0;
+  display: none;
 }
 
 /* Selection styling */
@@ -421,4 +417,20 @@
 
 .animate-text-shimmer {
   animation: text-shimmer 3s linear infinite;
+}
+
+/* Bracket styling to match the new logo */
+.bracket-heading::before {
+  content: "<";
+  @apply text-foreground/20 mr-4 font-normal transition-all duration-300;
+}
+
+.bracket-heading::after {
+  content: ">";
+  @apply text-foreground/20 ml-4 font-normal transition-all duration-300;
+}
+
+.bracket-heading:hover::before,
+.bracket-heading:hover::after {
+  @apply text-sky opacity-100;
 }

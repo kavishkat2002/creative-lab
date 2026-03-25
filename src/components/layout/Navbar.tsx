@@ -50,7 +50,7 @@ export function Navbar() {
           top: shouldShowScrolledState ? "1rem" : "0rem"
         }}
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }} // smooth easeOutExpo-like
-        className={`pointer-events-auto backdrop-blur-xl transition-all duration-500 rounded-3xl ${shouldShowScrolledState
+        className={`pointer-events-auto backdrop-blur-2xl transition-all duration-500 rounded-3xl ${shouldShowScrolledState
           ? "bg-white/95 dark:bg-slate-900/95 shadow-2xl shadow-oxford/20 border border-white/30"
           : "bg-transparent border-transparent"
           }`}
@@ -125,13 +125,24 @@ export function Navbar() {
               </Link>
             </div>
 
-            {/* Mobile Menu Button */}
+            {/* Mobile Menu Button - Enhanced Tap Target */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className={`md:hidden p-2 rounded-xl transition-colors ${shouldShowScrolledState ? "hover:bg-slate-100 text-slate-900" : "hover:bg-white/10 text-white"
+              className={`md:hidden p-3 rounded-xl transition-colors active:scale-95 ${shouldShowScrolledState ? "hover:bg-slate-100 text-slate-900" : "hover:bg-white/10 text-white"
                 }`}
+              aria-label="Toggle Navigation Menu"
             >
-              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              <AnimatePresence mode="wait">
+                {isOpen ? (
+                  <motion.div key="close" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.2 }}>
+                    <X className="w-6 h-6" />
+                  </motion.div>
+                ) : (
+                  <motion.div key="menu" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.2 }}>
+                    <Menu className="w-6 h-6" />
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </button>
           </div>
         </div>
@@ -152,7 +163,7 @@ export function Navbar() {
                     key={link.href}
                     to={link.href}
                     onClick={() => setIsOpen(false)}
-                    className={`flex items-center justify-between px-5 py-3 rounded-2xl text-sm font-bold transition-all ${location.pathname === link.href
+                    className={`flex items-center justify-between px-5 py-4 rounded-2xl text-[15px] font-bold transition-all active:scale-95 ${location.pathname === link.href
                       ? "bg-gradient-to-r from-sky/20 to-star/20 text-sky"
                       : shouldShowScrolledState
                         ? "text-slate-600 hover:bg-slate-100"
@@ -161,7 +172,7 @@ export function Navbar() {
                   >
                     {link.label}
                     {location.pathname === link.href && (
-                      <motion.div layoutId="mobileActiveDot" className="w-1.5 h-1.5 rounded-full bg-sky" />
+                      <motion.div layoutId="mobileActiveDot" className="w-2 h-2 rounded-full bg-sky" />
                     )}
                   </Link>
                 ))}

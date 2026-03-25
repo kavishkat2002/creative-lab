@@ -3,6 +3,7 @@ import { Heart, Users, Lightbulb, Target, ArrowRight } from "lucide-react";
 
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { SEO } from "@/components/SEO";
 
 const values = [
   {
@@ -30,6 +31,11 @@ const values = [
 const About = () => {
   return (
     <>
+      <SEO 
+        title="About Us | Creativex Technology"
+        description="Learn about the elite engineers and AI strategists behind Creativex Technology. We build human-first, innovative software solutions."
+        url="https://creativex.technology/about"
+      />
       {/* Hero Section */}
       <section className="py-24 pt-32">
         <div className="container mx-auto px-4 lg:px-8">
@@ -44,7 +50,7 @@ const About = () => {
                 We're the people behind the <span className="gradient-text">pixels</span>
               </h1>
               <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                Creative Lab started with a simple belief: technology should feel human.
+                Creativex Technology started with a simple belief: technology should feel human.
                 Too often, we saw companies frustrated by software that didn't understand
                 their needs, built by teams that didn't listen.
               </p>

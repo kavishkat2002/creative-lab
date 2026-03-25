@@ -11,6 +11,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import { SEO } from "@/components/SEO";
 
 const formSchema = z.object({
   name: z.string().min(2, "Please enter your name"),
@@ -92,6 +93,11 @@ const Contact = () => {
 
   return (
     <>
+      <SEO 
+        title="Contact Us | Creativex Technology"
+        description="Ready to start a project? Contact Creativex Technology today to discuss custom software, AI development, and digital transformation."
+        url="https://creativex.technology/contact"
+      />
       {/* Hero Section */}
       <section className="py-24 pt-32">
         <div className="container mx-auto px-4 lg:px-8">

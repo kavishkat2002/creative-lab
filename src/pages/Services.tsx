@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import * as LucideIcons from "lucide-react";
 
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
+import { SEO } from "@/components/SEO";
 
 interface Service {
   id: string;
@@ -15,6 +16,67 @@ interface Service {
   features: string[];
   display_order: number;
 }
+
+const ServiceImage3D = ({ children }: { children: React.ReactNode }) => {
+  const ref = useRef<HTMLDivElement>(null);
+
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const mouseXSpring = useSpring(x, { stiffness: 300, damping: 30 });
+  const mouseYSpring = useSpring(y, { stiffness: 300, damping: 30 });
+
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["12deg", "-12deg"]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-12deg", "12deg"]);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    if (!ref.current) return;
+
+    const rect = ref.current.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+
+    const xPct = mouseX / width - 0.5;
+    const yPct = mouseY / height - 0.5;
+
+    x.set(xPct);
+    y.set(yPct);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
+  return (
+    <motion.div
+      ref={ref}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{
+        rotateY,
+        rotateX,
+        transformStyle: "preserve-3d",
+      }}
+      className="relative w-full perspective-1000 group cursor-pointer"
+    >
+      <div 
+        className="rounded-3xl overflow-hidden shadow-2xl shadow-oxford/10 border border-white/5 bg-muted/20 hover:shadow-sky/25 transition-shadow duration-500"
+        style={{ transform: "translateZ(30px)" }}
+      >
+        {children}
+      </div>
+      {/* Deep 3D Glow */}
+      <div 
+        className="absolute inset-x-4 -bottom-4 h-3/4 bg-sky/30 blur-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10" 
+        style={{ transform: "translateZ(-20px)" }} 
+      />
+    </motion.div>
+  );
+};
 
 const Services = () => {
   const [services, setServices] = useState<Service[]>([]);
@@ -48,6 +110,11 @@ const Services = () => {
 
   return (
     <>
+      <SEO 
+        title="Services | Creativex Technology"
+        description="Explore our cutting-edge AI, Machine Learning, Custom Software, and Mobile App Development services designed for scalable business growth."
+        url="https://creativex.technology/services"
+      />
       {/* Hero Section */}
       <section className="py-24 pt-32">
         <div className="container mx-auto px-4 lg:px-8">
@@ -85,6 +152,14 @@ const Services = () => {
             <div className="space-y-32">
               {services.map((service, index) => {
                 const IconComponent = getIconComponent(service.icon);
+                
+                const resolvedImageUrl = service.image_url 
+                  || (service.title === "Custom Software Development" ? "/custom-software.png" : null)
+                  || (service.title === "AI & Machine Learning" ? "/ai-machine-learning.png" : null)
+                  || (service.title === "Mobile App Development" ? "/mobile-app-dev.png" : null)
+                  || (service.title === "Web Development" ? "/web-dev.png" : null)
+                  || (service.title === "Cloud & DevOps" ? "/cloud-devops.png" : null)
+                  || (service.title === "Data & Analytics" ? "/data-analytics.png" : null);
 
                 return (
                   <motion.div
@@ -126,19 +201,19 @@ const Services = () => {
                     </div>
 
                     <div className={index % 2 === 1 ? "" : "lg:order-1"}>
-                      <div className="rounded-3xl overflow-hidden shadow-2xl bg-muted/20">
-                        {service.image_url ? (
+                      <ServiceImage3D>
+                        {resolvedImageUrl ? (
                           <img
-                            src={service.image_url}
+                            src={resolvedImageUrl}
                             alt={service.title}
-                            className="w-full h-full object-cover aspect-[4/3] transform hover:scale-110 transition-transform duration-700"
+                            className="w-full h-full object-cover aspect-[4/3] transform group-hover:scale-110 transition-transform duration-700"
                           />
                         ) : (
-                          <div className="w-full aspect-[4/3] flex items-center justify-center bg-gradient-to-br from-primary/10 to-sky/10">
+                          <div className="w-full aspect-[4/3] flex items-center justify-center bg-gradient-to-br from-primary/10 to-sky/10 group-hover:scale-110 transition-transform duration-700">
                             <IconComponent className="w-24 h-24 text-primary/20" />
                           </div>
                         )}
-                      </div>
+                      </ServiceImage3D>
                     </div>
                   </motion.div>
                 );
