@@ -133,14 +133,23 @@ export function AIChatbot() {
       <motion.div
         className={`fixed bottom-6 right-6 z-50 flex items-center gap-4 ${isOpen ? "hidden" : "flex"}`}
       >
-        <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 1 }}
-          className="hidden md:block bg-card px-4 py-2 rounded-2xl shadow-xl border border-border text-sm font-semibold text-foreground whitespace-nowrap"
-        >
-          Have questions? Chat with CRETO! 👋
-        </motion.div>
+        <AnimatePresence>
+          {!isOpen && (
+            <motion.div
+              initial={{ opacity: 0, x: 20, scale: 0.8 }}
+              animate={{ opacity: 1, x: 0, scale: 1 }}
+              transition={{ 
+                duration: 0.8, 
+                delay: 2, 
+                ease: [0.16, 1, 0.3, 1] 
+              }}
+              className="hidden md:block bg-card/80 backdrop-blur-md px-5 py-3 rounded-2xl shadow-2xl border border-sky/30 text-sm font-bold text-foreground whitespace-nowrap relative group"
+            >
+              <div className="absolute -right-2 top-1/2 -translate-y-1/2 w-4 h-4 bg-card/80 border-t border-r border-sky/30 rotate-45" />
+              <span className="relative z-10">Have questions? Chat with <span className="text-sky">CRETO!</span> 👋</span>
+            </motion.div>
+          )}
+        </AnimatePresence>
         <motion.button
           onClick={() => setIsOpen(true)}
           className="w-20 h-20 md:w-24 md:h-24 bg-transparent shadow-none border-none p-0 flex items-center justify-center hover:scale-110 transition-transform relative group"
