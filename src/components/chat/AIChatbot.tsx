@@ -50,7 +50,9 @@ export function AIChatbot() {
       if (resp.status === 402) {
         throw new Error("I've reached my chat limit for now. Please try again later!");
       }
-      throw new Error("Something went wrong. Let me try again.");
+      const errorData = await resp.json().catch(() => null);
+      const errorMessage = errorData?.error || errorData?.message || "Something went wrong. Let me try again.";
+      throw new Error(errorMessage);
     }
 
     if (!resp.body) throw new Error("No response body");
