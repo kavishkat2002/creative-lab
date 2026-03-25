@@ -96,7 +96,7 @@ const Contact = () => {
       <SEO 
         title="Contact Us | Creativex Technology"
         description="Ready to start a project? Contact Creativex Technology today to discuss custom software, AI development, and digital transformation."
-        url="https://creativex.technology/contact"
+        url="https://creativexlab.online/contact"
       />
       {/* Hero Section */}
       <section className="py-24 pt-32">

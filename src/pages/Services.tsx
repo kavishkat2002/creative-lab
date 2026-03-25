@@ -113,7 +113,7 @@ const Services = () => {
       <SEO 
         title="Services | Creativex Technology"
         description="Explore our cutting-edge AI, Machine Learning, Custom Software, and Mobile App Development services designed for scalable business growth."
-        url="https://creativex.technology/services"
+        url="https://creativexlab.online/services"
       />
       {/* Hero Section */}
       <section className="py-24 pt-32">

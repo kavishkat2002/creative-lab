@@ -34,7 +34,7 @@ const About = () => {
       <SEO 
         title="About Us | Creativex Technology"
         description="Learn about the elite engineers and AI strategists behind Creativex Technology. We build human-first, innovative software solutions."
-        url="https://creativex.technology/about"
+        url="https://creativexlab.online/about"
       />
       {/* Hero Section */}
       <section className="py-24 pt-32">

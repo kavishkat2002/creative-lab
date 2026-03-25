@@ -14,8 +14,8 @@ export function SEO({
   title = "Creativex Technology | Elite AI & Digital Consultancy",
   description = "Creativex Technology delivers highly innovative and strategic software solutions, custom AI products, and performance-driven technology for ambitious businesses globally.",
   keywords = "AI agency, custom software development, Web3 development, machine learning, mobile app development, digital transformation, Creativex Technology",
-  url = "https://creativex.technology",
-  image = "https://creativex.technology/og-creative-lab.png",
+  url = "https://creativexlab.online",
+  image = "https://creativexlab.online/og-creative-lab.png",
   type = "website",
   schema,
 }: SEOProps) {
@@ -26,8 +26,8 @@ export function SEO({
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Creativex Technology",
-    "url": "https://creativex.technology",
-    "logo": "https://creativex.technology/logo-creative-lab.png",
+    "url": "https://creativexlab.online",
+    "logo": "https://creativexlab.online/logo-creative-lab.png",
     "description": description,
     "contactPoint": {
       "@type": "ContactPoint",

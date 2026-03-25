@@ -179,7 +179,7 @@ const Projects = () => {
       <SEO 
         title="Portfolio & Case Studies | Creativex Technology"
         description="Discover our latest AI products, scalable web apps, and enterprise software solutions. See how we drive digital transformation for global clients."
-        url="https://creativex.technology/projects"
+        url="https://creativexlab.online/projects"
       />
       <section className="py-24 pt-32 min-h-screen relative overflow-hidden">
         {/* Ambient Background */}
