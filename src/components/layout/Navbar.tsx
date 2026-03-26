@@ -179,6 +179,15 @@ export function Navbar() {
 
                 <div className="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent my-2" />
 
+                <div className="flex items-center justify-between px-5 py-2 mb-2">
+                  <span className={`text-[15px] font-bold ${shouldShowScrolledState ? "text-slate-600 dark:text-slate-300" : "text-white/70"}`}>
+                    Theme Mode
+                  </span>
+                  <div className={!shouldShowScrolledState ? "text-white" : ""}>
+                    <ModeToggle />
+                  </div>
+                </div>
+
                 <Link to="/contact" onClick={() => setIsOpen(false)}>
                   <Button className="w-full rounded-xl font-bold bg-gradient-to-r from-sky to-star text-white border-0 shadow-lg shadow-sky/20">
                     Book a Call
