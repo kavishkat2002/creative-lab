@@ -47,7 +47,7 @@ export function ServicesPreview() {
           viewport={{ once: true }}
           className="max-w-2xl mb-16"
         >
-          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 leading-[1.2] py-2 bracket-heading">
+          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 leading-[1.2] py-2">
             Digital Solutions{" "}
             <span className="gradient-text !leading-normal">That Deliver Results</span>
           </h2>

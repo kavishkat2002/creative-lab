@@ -76,19 +76,28 @@
     --card-foreground: 0 0% 100%;
     --popover: 0 0% 3%;
     --popover-foreground: 0 0% 100%;
-    --primary: 217 85% 65%;
-    --primary-foreground: 0 0% 0%;
+    --primary: 217 85% 45%;
+    --primary-foreground: 0 0% 100%;
     --secondary: 0 0% 10%;
     --secondary-foreground: 0 0% 100%;
     --muted: 0 0% 10%;
     --muted-foreground: 0 0% 100%;
-    --accent: 217 85% 45%;
+    --accent: 217 85% 50%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 62% 50%;
     --destructive-foreground: 0 0% 100%;
     --border: 0 0% 15%;
     --input: 0 0% 15%;
-    --ring: 217 100% 65%;
+    --ring: 217 85% 50%;
+
+    /* Strong overrides to prevent blue section blocks in dark mode */
+    --oxford: 0 0% 0%;
+    --navy: 0 0% 0%;
+    --navy-light: 0 0% 5%;
+    --star: 217 85% 35%;
+    --sky: 217 85% 45%;
+    --indigo-deep: 0 0% 0%;
+    --indigo-soft: 217 70% 60%;
   }
 }
 
@@ -330,8 +339,8 @@
     font-weight: 700;
     background: linear-gradient(
       135deg,
-      hsl(var(--sky)),
-      hsl(var(--indigo-soft))
+      #ffffff,
+      #94a3b8
     );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -419,18 +428,4 @@
   animation: text-shimmer 3s linear infinite;
 }
 
-/* Bracket styling to match the new logo */
-.bracket-heading::before {
-  content: "<";
-  @apply text-foreground/20 mr-4 font-normal transition-all duration-300;
-}
 
-.bracket-heading::after {
-  content: ">";
-  @apply text-foreground/20 ml-4 font-normal transition-all duration-300;
-}
-
-.bracket-heading:hover::before,
-.bracket-heading:hover::after {
-  @apply text-sky opacity-100;
-}

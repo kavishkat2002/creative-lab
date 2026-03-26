@@ -66,11 +66,10 @@ export function HeroSection() {
   return (
     <section
       ref={containerRef}
-      className="relative w-full min-h-[100dvh] md:h-screen flex flex-col bg-navy overflow-x-hidden"
+      className="relative w-full min-h-[100dvh] md:min-h-screen flex flex-col bg-black overflow-hidden"
     >
-      {/* Gradient background layers */}
-      {/* Dark midnight background layers */}
-      <div className="absolute inset-0 w-full h-full bg-black" />
+      {/* Dark midnight base layer */}
+      <div className="absolute inset-0 w-full h-full bg-black z-0" />
       <div className="absolute inset-0 w-full h-full bg-[radial-gradient(ellipse_at_top_right,_rgba(14,165,233,0.15),transparent_70%)]" />
       <div className="absolute inset-0 w-full h-full bg-[radial-gradient(ellipse_at_bottom_left,_rgba(99,102,241,0.1),transparent_70%)]" />
 
@@ -91,7 +90,7 @@ export function HeroSection() {
       {/* Main content */}
       <motion.div
         style={{ y, opacity }}
-        className="flex-1 flex items-center justify-center w-full px-4 sm:px-6 lg:px-8 xl:px-16 relative z-10 pt-40 pb-12 md:pt-24 md:pb-0"
+        className="flex-1 flex items-center justify-center w-full px-4 sm:px-6 lg:px-8 xl:px-16 relative z-10 pt-32 pb-8 md:pt-32 md:pb-12"
       >
         <div className="max-w-7xl mx-auto text-center">
           {/* Main Heading with 3D effect */}
@@ -104,17 +103,7 @@ export function HeroSection() {
             <span className="text-white/90">Empowering</span>
             <br />
             <span
-              className="relative inline-block mt-3 text-white/95 bracket-heading"
-              style={{
-                textShadow: `
-                  1px 1px 0 rgba(100, 116, 139, 0.3),
-                  2px 2px 0 rgba(100, 116, 139, 0.25),
-                  3px 3px 0 rgba(100, 116, 139, 0.2),
-                  4px 4px 0 rgba(100, 116, 139, 0.15),
-                  5px 5px 0 rgba(100, 116, 139, 0.1),
-                  6px 6px 10px rgba(0, 0, 0, 0.3)
-                `
-              }}
+              className="relative inline-block mt-3 text-white/95"
             >
               Digital Evolution
             </span>
@@ -182,7 +171,7 @@ export function HeroSection() {
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.6 }}
-        className="relative z-10 border-t border-white/5 w-full flex-shrink-0 mt-auto pb-12"
+        className="relative z-10 border-t border-white/5 w-full flex-shrink-0 pb-12"
       >
         <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-16 py-8 md:py-6">
           <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
