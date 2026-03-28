@@ -27,7 +27,7 @@ export function SEO({
     "@type": "Organization",
     "name": "Creativex Technology",
     "url": "https://creativexlab.online",
-    "logo": "https://creativexlab.online/logo-creative-lab.png",
+    "logo": "https://creativexlab.online/creativex-logo.png",
     "description": description,
     "contactPoint": {
       "@type": "ContactPoint",

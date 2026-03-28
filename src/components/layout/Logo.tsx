@@ -15,7 +15,7 @@ export function Logo({ className, isLight = false }: LogoProps) {
     : theme;
 
   // Use the new Creativex Technology logo
-  const logoSrc = "/logo-creative-lab.png";
+  const logoSrc = "/creativex-logo.png";
 
 
   return (
@@ -23,7 +23,7 @@ export function Logo({ className, isLight = false }: LogoProps) {
       <img 
         src={logoSrc} 
         alt="Creativex Technology Logo" 
-        className="h-10 w-auto object-contain"
+        className="h-16 md:h-20 w-auto object-contain scale-110 md:scale-125 origin-left"
       />
     </div>
   );

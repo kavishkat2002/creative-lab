@@ -11,6 +11,7 @@ const navLinks = [
   { href: "/", label: "Home" },
   { href: "/services", label: "Services" },
   { href: "/projects", label: "Portfolio" },
+  { href: "/islandedge", label: "IslandEdge" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
@@ -51,7 +52,7 @@ export function Navbar() {
         }}
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }} // smooth easeOutExpo-like
         className={`pointer-events-auto backdrop-blur-2xl transition-all duration-500 rounded-3xl ${shouldShowScrolledState
-          ? "bg-white/95 dark:bg-black/95 shadow-2xl shadow-oxford/20 border border-white/30"
+          ? "bg-white/20 dark:bg-black/30 shadow-2xl shadow-oxford/10 border border-white/10"
           : "bg-transparent border-transparent"
           }`}
       >

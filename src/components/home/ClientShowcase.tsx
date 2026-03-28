@@ -46,26 +46,18 @@ const clients = [
     ),
   },
   {
-    name: "YouTube",
+    name: "ClientPlus",
     logo: (
-      <div className="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 text-foreground">
-        <Youtube className="w-9 h-9 text-[#FF0000]" />
-        <span className="font-bold text-[26px] tracking-tighter">YouTube</span>
+      <div className="flex items-center justify-center h-full w-full opacity-70 hover:opacity-100 transition-all duration-300 grayscale hover:grayscale-0 p-4">
+        <img src="/client-plus.jpg" alt="Client+" className="h-10 md:h-12 w-auto object-contain mix-blend-multiply dark:invert dark:mix-blend-screen" />
       </div>
     ),
   },
-  // Add some generic high-tech ones to fill the loop out
   {
-    name: "Microsoft",
+    name: "MohanTrader",
     logo: (
-      <div className="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 text-foreground">
-        <div className="grid grid-cols-2 gap-0.5 w-6 h-6 mr-1">
-          <div className="bg-[#f35325] w-full h-full"></div>
-          <div className="bg-[#81bc06] w-full h-full"></div>
-          <div className="bg-[#05a6f0] w-full h-full"></div>
-          <div className="bg-[#ffba08] w-full h-full"></div>
-        </div>
-        <span className="font-semibold text-[26px] tracking-tight">Microsoft</span>
+      <div className="flex items-center justify-center h-full w-full opacity-70 hover:opacity-100 transition-all duration-300 grayscale hover:grayscale-0 p-4">
+        <img src="/mohan-trader.png" alt="MohanTrader" className="h-14 md:h-16 w-auto object-contain mix-blend-screen" />
       </div>
     ),
   },
