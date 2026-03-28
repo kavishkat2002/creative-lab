@@ -30,7 +30,7 @@ const contactInfo = [
     icon: Mail,
     label: "Email us",
     value: "info@creativexlab.online",
-    description: "We'll respond within 24 hours",
+    description: "We'll respond within 2 hours",
     href: "mailto:info@creativexlab.online",
   },
   {
@@ -212,7 +212,7 @@ const Contact = () => {
                     </div>
                     <h3 className="font-display text-2xl font-bold mb-2 text-foreground">Thank you!</h3>
                     <p className="text-muted-foreground mb-6 max-w-sm mx-auto">
-                      We've received your message and will get back to you within 24 hours.
+                      We've received your message and will get back to you within 2 hours.
                     </p>
                     <Button onClick={() => setIsSuccess(false)} variant="outline" className="rounded-full">
                       Send another message
