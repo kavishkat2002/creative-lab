@@ -27,12 +27,19 @@ export default function IslandEdge() {
             transition={{ duration: 0.6 }}
             className="flex flex-col items-center"
           >
-            <div className="bg-white/50 dark:bg-white/5 backdrop-blur-md p-6 sm:p-8 md:p-12 rounded-3xl border border-white/20 dark:border-white/10 shadow-2xl shadow-[#1d4ed8]/10 mb-10 w-full max-w-lg md:max-w-2xl mx-auto flex justify-center">
+            <div className="bg-white/50 dark:bg-white/5 backdrop-blur-md p-6 sm:p-8 md:p-12 rounded-3xl border border-white/20 dark:border-white/10 shadow-2xl shadow-[#1d4ed8]/10 mb-10 w-full max-w-lg md:max-w-3xl mx-auto flex flex-col sm:flex-row justify-center items-center gap-8 sm:gap-12 md:gap-16">
               {/* IslandEdge Logo */}
               <img 
                 src="/islandedge-logo.png" 
                 alt="IslandEdge Media Logo" 
-                className="h-24 md:h-32 w-auto object-contain drop-shadow-lg"
+                className="h-24 md:h-32 w-auto object-contain drop-shadow-lg shrink-0"
+              />
+              <div className="h-px w-24 sm:w-px sm:h-20 bg-slate-200 dark:bg-white/10 shrink-0"></div>
+              {/* Client+ Logo */}
+              <img 
+                src="/client-plus.jpg" 
+                alt="Client+ Logo" 
+                className="h-14 md:h-20 w-auto object-contain drop-shadow-lg mix-blend-multiply dark:invert dark:mix-blend-screen shrink-0"
               />
             </div>
 
