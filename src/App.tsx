@@ -9,7 +9,7 @@ import { AIChatbot } from "@/components/chat/AIChatbot";
 import { PageTransition } from "@/components/layout/PageTransition";
 import { Layout } from "@/components/layout/Layout";
 import { LoadingScreen } from "@/components/ui/LoadingScreen";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useLayoutEffect } from "react";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { ThemeProvider } from "@/components/theme-provider";
 import Index from "./pages/Index";
@@ -24,6 +24,14 @@ import NotFound from "./pages/NotFound";
 import IslandEdge from "./pages/IslandEdge";
 
 const queryClient = new QueryClient();
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useLayoutEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  }, [pathname]);
+  return null;
+}
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -96,6 +104,7 @@ const App = () => {
               <Toaster />
               <Sonner />
               <BrowserRouter>
+                <ScrollToTop />
                 <Layout>
                   <AnimatedRoutes />
                 </Layout>

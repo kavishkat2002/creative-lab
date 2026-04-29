@@ -1,50 +1,6 @@
 import { motion } from "framer-motion";
-import { Youtube, Box, PenTool, Smartphone, Monitor, Database, Cloud } from "lucide-react";
 
 const clients = [
-  {
-    name: "amazon",
-    logo: (
-      <div className="flex items-center gap-1 opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
-        <span className="font-bold text-[28px] tracking-tighter lowercase leading-none mt-1">
-          amazon
-        </span>
-      </div>
-    ),
-  },
-  {
-    name: "android",
-    logo: (
-      <div className="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 text-foreground">
-        <span className="font-semibold text-[26px] tracking-tight lowercase">
-          android
-        </span>
-        <Smartphone className="w-8 h-8 -ml-1 text-[#3DDC84]" />
-      </div>
-    ),
-  },
-  {
-    name: "WordPress",
-    logo: (
-      <div className="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 text-foreground">
-        <div className="w-8 h-8 rounded-full border-[3px] border-current flex items-center justify-center text-[#21759b]">
-          <span className="font-serif font-bold text-xl leading-none italic pr-0.5">W</span>
-        </div>
-        <span className="font-serif italic font-bold text-[26px] tracking-tight">
-          WordPress
-        </span>
-      </div>
-    ),
-  },
-  {
-    name: "Dropbox",
-    logo: (
-      <div className="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 text-foreground">
-        <Box className="w-8 h-8 text-[#0061FF]" />
-        <span className="font-bold text-[26px] tracking-tight">Dropbox</span>
-      </div>
-    ),
-  },
   {
     name: "ClientPlus",
     logo: (
@@ -68,6 +24,56 @@ const clients = [
         <span className="font-black text-[28px] tracking-tight text-foreground">
           #slack
         </span>
+      </div>
+    ),
+  },
+  {
+    name: "IslandEdge",
+    logo: (
+      <div className="flex items-center justify-center h-full w-full opacity-70 hover:opacity-100 transition-all duration-300 grayscale hover:grayscale-0 p-4">
+        <img src="/islandedge-logo.png" alt="IslandEdge" className="h-10 md:h-12 w-auto object-contain" />
+      </div>
+    ),
+  },
+  {
+    name: "AKKAYA",
+    logo: (
+      <div className="flex items-center gap-1 opacity-70 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 text-foreground">
+        <span className="font-black text-[24px] tracking-[0.3em] uppercase flex items-center">
+          AKKAYA
+        </span>
+      </div>
+    ),
+  },
+  {
+    name: "AGrupe",
+    logo: (
+      <div className="flex items-center justify-center h-full w-full opacity-70 hover:opacity-100 transition-all duration-300 grayscale hover:grayscale-0 p-4">
+        <img src="/a-grupe-logo.png" alt="A Grupe" className="h-16 md:h-20 w-auto object-contain" />
+      </div>
+    ),
+  },
+  {
+    name: "Keystone",
+    logo: (
+      <div className="flex items-center justify-center h-full w-full opacity-70 hover:opacity-100 transition-all duration-300 grayscale hover:grayscale-0 p-4">
+        <img src="/keystone-logo.png" alt="Keystone Capital" className="h-14 md:h-16 w-auto object-contain" />
+      </div>
+    ),
+  },
+  {
+    name: "USCarSales",
+    logo: (
+      <div className="flex items-center justify-center h-full w-full opacity-70 hover:opacity-100 transition-all duration-300 grayscale hover:grayscale-0 p-4">
+        <img src="/us-car-sales-logo.png" alt="US Car Sales" className="h-16 md:h-20 w-auto object-contain" />
+      </div>
+    ),
+  },
+  {
+    name: "JohnstonPrams",
+    logo: (
+      <div className="flex items-center justify-center h-full w-full opacity-70 hover:opacity-100 transition-all duration-300 grayscale hover:grayscale-0 p-4">
+        <img src="/johnston-prams-logo.png" alt="Johnston Prams" className="h-12 md:h-14 w-auto object-contain" />
       </div>
     ),
   },
