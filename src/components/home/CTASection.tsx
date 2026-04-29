@@ -61,7 +61,7 @@ export function CTASection() {
                           }`}
                       >
                         {i === 14 ? (
-                          <span className="text-xs font-bold">31</span>
+                          <span className="text-xs font-bold">15</span>
                         ) : (
                           <span className="text-[10px]">{i + 1}</span>
                         )}

@@ -4,94 +4,111 @@ import { Globe, BarChart2, Handshake, Lightbulb, TrendingUp, Settings } from "lu
 const reasons = [
   {
     icon: Globe,
+    number: "01",
     title: "Full-Spectrum Digital Expertise",
-    description: "From web development to AI solutions — we deliver comprehensive digital services under one roof.",
+    description: "From web development to AI solutions — everything under one roof, so you never juggle multiple vendors.",
   },
   {
     icon: BarChart2,
+    number: "02",
     title: "Data-Driven Approach",
-    description: "We don't guess. Every solution is powered by real data, analytics, and performance insights.",
+    description: "Every decision is backed by real analytics and performance data — turning insight into business growth.",
   },
   {
     icon: Handshake,
+    number: "03",
     title: "Transparent Communication",
-    description: "You're always in the loop. Clear reporting, regular updates, and honest advice come standard.",
+    description: "Clear reporting, honest advice, and regular updates. You're always in the loop — no surprises.",
   },
   {
     icon: Lightbulb,
+    number: "04",
     title: "Innovative Solutions",
-    description: "We stay ahead of technology trends to deliver cutting-edge solutions for your business.",
+    description: "We stay ahead of technology trends to deliver modern, future-proof solutions for your business.",
   },
   {
     icon: TrendingUp,
+    number: "05",
     title: "Scalable Architecture",
-    description: "Built to grow with you. Our solutions scale seamlessly as your business expands.",
+    description: "Built to grow with you. Our systems scale seamlessly from startup to enterprise.",
   },
   {
     icon: Settings,
+    number: "06",
     title: "Dedicated Support",
-    description: "24/7 support and maintenance to ensure your systems run smoothly at all times.",
+    description: "Ongoing maintenance and support to keep your systems running smoothly — every day.",
   },
 ];
 
+
+
 export function WhyChooseUs() {
   return (
-    <section className="relative w-full py-24 overflow-hidden">
-      {/* Darker, Richer Background Layers */}
-      <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-[#0a0e27] via-[#0f1535] to-[#050816]" />
-      <div className="absolute inset-0 w-full h-full bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-sky/30 via-transparent to-transparent" />
-      <div className="absolute inset-0 w-full h-full bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-indigo-deep/40 via-transparent to-transparent" />
+    <section className="relative w-full py-28 bg-[#0b1120] overflow-hidden">
 
-      {/* Grid Pattern Overlay - More Visible */}
-      <div
-        className="absolute inset-0 w-full h-full opacity-[0.05]"
-        style={{
-          backgroundImage: `linear-gradient(rgba(255,255,255,.15) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.15) 1px, transparent 1px)`,
-          backgroundSize: '60px 60px'
-        }}
-      />
+      <div className="container mx-auto px-6 lg:px-8 max-w-6xl relative z-10">
 
-      {/* Content */}
-      <div className="container mx-auto px-4 lg:px-8 max-w-7xl relative z-10">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="max-w-3xl mb-16"
-        >
-          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 bracket-heading">
-            Why Leading Brands{" "}
-            <span className="gradient-text">Choose Us</span>
-          </h2>
-          <p className="text-lg text-white/70 leading-relaxed">
-            We help your business grow with proven, data-led strategies.
-          </p>
-        </motion.div>
+        {/* Header */}
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-16 pb-16 border-b border-white/10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="max-w-xl"
+          >
+            <p className="text-[#00c896] text-sm font-semibold tracking-widest uppercase mb-4">
+              Why Choose Us
+            </p>
+            <h2 className="font-display text-4xl md:text-5xl font-bold text-white leading-tight">
+              Why Leading Brands{" "}
+              <span className="text-[#00c896]">Choose Us</span>
+            </h2>
+          </motion.div>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-white/40 text-base leading-relaxed max-w-sm lg:text-right"
+          >
+            We help your business grow with proven, data-led strategies built for long-term impact.
+          </motion.p>
+        </div>
 
         {/* Reasons Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/[0.06] rounded-2xl overflow-hidden mb-16">
           {reasons.map((reason, index) => (
             <motion.div
               key={reason.title}
-              initial={{ opacity: 0, scale: 0.95, y: 30 }}
-              whileInView={{ opacity: 1, scale: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="bg-white/[0.08] backdrop-blur-md border border-white/20 rounded-3xl p-6 md:p-8 hover:border-sky/50 transition-all hover:bg-white/[0.12] hover:shadow-2xl hover:shadow-sky/20 group"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.45, delay: index * 0.07 }}
+              className="group bg-[#0b1120] hover:bg-[#0f1a2e] transition-colors duration-300 p-8"
             >
-              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-sky/30 to-star/30 border border-sky/30 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:shadow-xl group-hover:shadow-sky/40 transition-all duration-300">
-                <reason.icon className="w-7 h-7 text-sky group-hover:text-white" strokeWidth={2} />
+              {/* Number + Icon row */}
+              <div className="flex items-center justify-between mb-6">
+                <span className="text-xs font-bold tracking-widest text-white/20 group-hover:text-[#00c896]/60 transition-colors">
+                  {reason.number}
+                </span>
+                <div className="w-10 h-10 rounded-lg border border-white/10 group-hover:border-[#00c896]/40 flex items-center justify-center transition-colors duration-300">
+                  <reason.icon className="w-5 h-5 text-white/30 group-hover:text-[#00c896] transition-colors duration-300" strokeWidth={1.5} />
+                </div>
               </div>
-              <h3 className="font-display text-xl font-bold text-white mb-3 group-hover:text-sky transition-colors">
+
+              <h3 className="text-white font-semibold text-base mb-2 leading-snug group-hover:text-[#00c896] transition-colors duration-300">
                 {reason.title}
               </h3>
-              <p className="text-white/70 leading-relaxed group-hover:text-white/90 transition-colors">
+              <p className="text-white/40 text-sm leading-relaxed">
                 {reason.description}
               </p>
             </motion.div>
           ))}
         </div>
+
+
       </div>
     </section>
   );

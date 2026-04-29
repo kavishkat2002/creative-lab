@@ -19,44 +19,44 @@
     --popover-foreground: 217 100% 15%;
 
     /* Logo Blue primary */
-    --primary: 217 85% 34%;
+    --primary: 217 90% 26%;
     --primary-foreground: 0 0% 100%;
 
     /* Logo Blue secondary */
     --secondary: 217 85% 96%;
-    --secondary-foreground: 217 85% 34%;
+    --secondary-foreground: 217 90% 26%;
 
     --muted: 217 85% 96%;
-    --muted-foreground: 217 40% 46%;
+    --muted-foreground: 217 40% 40%;
 
     /* Logo Blue accent */
-    --accent: 217 85% 45%;
+    --accent: 217 90% 32%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 217 73% 85%;
-    --input: 217 73% 85%;
-    --ring: 217 85% 34%;
+    --border: 217 60% 80%;
+    --input: 217 60% 80%;
+    --ring: 217 90% 26%;
 
     --radius: 1rem;
 
     /* Custom blue palette from logo */
-    --oxford: 217 85% 25%;
-    --star: 217 85% 34%;
-    --sky: 217 85% 34%;
-    --cyan-light: 217 73% 75%;
+    --oxford: 217 90% 18%;
+    --star: 217 90% 26%;
+    --sky: 217 90% 26%;
+    --cyan-light: 217 70% 65%;
     --cyan-soft: 217 85% 95%;
-    --indigo-deep: 217 60% 30%;
-    --indigo-soft: 217 80% 65%;
-    --amber: 35 100% 50%; /* Adjusted for better contrast with blue */
+    --indigo-deep: 217 70% 22%;
+    --indigo-soft: 217 75% 55%;
+    --amber: 35 100% 50%;
 
     /* Backwards compatibility */
-    --coral: 217 85% 34%;
-    --coral-light: 217 73% 75%;
-    --navy: 217 85% 34%;
-    --navy-light: 217 85% 34%;
+    --coral: 217 90% 26%;
+    --coral-light: 217 70% 65%;
+    --navy: 217 90% 26%;
+    --navy-light: 217 90% 26%;
 
     /* Sidebar */
     --sidebar-background: 217 85% 20%;
@@ -70,34 +70,34 @@
   }
 
   .dark {
-    --background: 0 0% 0%;
-    --foreground: 0 0% 100%;
-    --card: 0 0% 3%;
-    --card-foreground: 0 0% 100%;
-    --popover: 0 0% 3%;
-    --popover-foreground: 0 0% 100%;
-    --primary: 217 85% 45%;
+    --background: 222 47% 9%;       /* deep navy, not black */
+    --foreground: 210 20% 92%;      /* soft white, not glaring */
+    --card: 222 40% 12%;            /* slightly lighter navy card */
+    --card-foreground: 210 20% 92%;
+    --popover: 222 40% 11%;
+    --popover-foreground: 210 20% 92%;
+    --primary: 217 90% 50%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 0 0% 10%;
-    --secondary-foreground: 0 0% 100%;
-    --muted: 0 0% 10%;
-    --muted-foreground: 0 0% 100%;
-    --accent: 217 85% 50%;
+    --secondary: 222 35% 16%;
+    --secondary-foreground: 210 20% 88%;
+    --muted: 222 35% 15%;
+    --muted-foreground: 215 20% 55%;
+    --accent: 217 90% 55%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 62% 50%;
     --destructive-foreground: 0 0% 100%;
-    --border: 0 0% 15%;
-    --input: 0 0% 15%;
-    --ring: 217 85% 50%;
+    --border: 222 30% 20%;
+    --input: 222 30% 18%;
+    --ring: 217 90% 50%;
 
-    /* Strong overrides to prevent blue section blocks in dark mode */
-    --oxford: 0 0% 0%;
-    --navy: 0 0% 0%;
-    --navy-light: 0 0% 5%;
-    --star: 217 85% 35%;
-    --sky: 217 85% 45%;
-    --indigo-deep: 0 0% 0%;
-    --indigo-soft: 217 70% 60%;
+    /* Dark navy overrides */
+    --oxford: 222 47% 7%;
+    --navy: 222 47% 9%;
+    --navy-light: 222 40% 14%;
+    --star: 217 90% 42%;
+    --sky: 217 90% 52%;
+    --indigo-deep: 222 47% 7%;
+    --indigo-soft: 217 75% 60%;
   }
 }
 
