@@ -9,10 +9,10 @@ const features = [
   { icon: BarChart, title: "Analytics & Growth", desc: "Transparent reporting, rigorous A/B testing, and continuous ROI optimization." },
 ];
 
-export default function IslandEdge() {
+export default function CreativeMedia() {
   return (
     <div className="min-h-screen w-full bg-slate-50 dark:bg-[#020617] relative overflow-hidden flex flex-col pt-24 md:pt-32 pb-20">
-      {/* Background Glows utilizing the IslandEdge Logo Colors: Dark Blue (#1d4ed8) and Teal (#0d9488) */}
+      {/* Background Glows utilizing the Creative Media Logo Colors: Dark Blue (#1d4ed8) and Teal (#0d9488) */}
       <div className="absolute top-0 right-0 w-full md:w-[800px] h-[500px] bg-gradient-to-br from-[#1d4ed8]/20 via-[#0d9488]/15 to-transparent blur-3xl rounded-full -z-10 pointer-events-none transform translate-x-1/4 -translate-y-1/4" />
       <div className="absolute bottom-0 left-0 w-full md:w-[600px] h-[600px] bg-gradient-to-tr from-[#0d9488]/20 via-[#1d4ed8]/10 to-transparent blur-3xl rounded-full -z-10 pointer-events-none transform -translate-x-1/4 translate-y-1/4" />
 
@@ -27,19 +27,22 @@ export default function IslandEdge() {
             transition={{ duration: 0.6 }}
             className="flex flex-col items-center"
           >
-            <div className="bg-white/50 dark:bg-white/5 backdrop-blur-md p-6 sm:p-8 md:p-12 rounded-3xl border border-white/20 dark:border-white/10 shadow-2xl shadow-[#1d4ed8]/10 mb-10 w-full max-w-lg md:max-w-3xl mx-auto flex flex-col sm:flex-row justify-center items-center gap-8 sm:gap-12 md:gap-16">
-              {/* IslandEdge Logo */}
+            <div className="bg-white/50 dark:bg-white/5 backdrop-blur-md p-6 sm:p-8 md:p-12 rounded-3xl border border-white/20 dark:border-white/10 shadow-2xl shadow-[#1d4ed8]/10 mb-10 w-full max-w-lg md:max-w-2xl mx-auto flex flex-col md:flex-row gap-6 md:gap-8 justify-center items-center">
+              {/* Creative Media Logo */}
               <img 
-                src="/islandedge-logo.png" 
-                alt="IslandEdge Media Logo" 
-                className="h-24 md:h-32 w-auto object-contain drop-shadow-lg shrink-0"
+                src="/creative-media-logo.png" 
+                alt="Creative Media Logo" 
+                className="h-20 md:h-28 w-auto object-contain drop-shadow-lg"
               />
-              <div className="h-px w-24 sm:w-px sm:h-20 bg-slate-200 dark:bg-white/10 shrink-0"></div>
-              {/* Client+ Logo */}
+              
+              {/* Divider (visible on md screens and up) */}
+              <div className="hidden md:block h-16 w-px bg-slate-300 dark:bg-slate-700/50" />
+              
+              {/* Meta Business Partner Badge */}
               <img 
-                src="/client-plus.jpg" 
-                alt="Client+ Logo" 
-                className="h-14 md:h-20 w-auto object-contain drop-shadow-lg mix-blend-multiply dark:invert dark:mix-blend-screen shrink-0"
+                src="/meta-business-partner-badge.png" 
+                alt="Meta Business Partner Badge" 
+                className="h-16 md:h-22 w-auto object-contain drop-shadow-lg rounded-xl hover:scale-105 transition-transform duration-300"
               />
             </div>
 
@@ -55,7 +58,7 @@ export default function IslandEdge() {
             </h1>
 
             <p className="text-lg md:text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto text-center leading-relaxed mb-10">
-              We are Starterd Islandedge Media. We blend creative strategy, data-driven targeting, and high-impact media placement to scale your business unreachably fast.
+              We are Creative Media. We blend creative strategy, data-driven targeting, and high-impact media placement to scale your business unreachably fast.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
@@ -121,7 +124,7 @@ export default function IslandEdge() {
             Ready to Dominate Your Market?
           </h2>
           <p className="text-white/80 text-lg max-w-2xl mx-auto mb-10 relative z-10">
-            Join the countless brands scaling with IslandEdge Media's innovative advertising strategies.
+            Join the countless brands scaling with Creative Media's innovative advertising strategies.
           </p>
           <Link to="/contact">
             <Button size="lg" className="rounded-full px-10 py-7 bg-white text-[#1d4ed8] font-bold text-lg hover:bg-slate-50 hover:scale-105 transition-all duration-300 shadow-xl relative z-10 border-0">

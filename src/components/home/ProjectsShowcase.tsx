@@ -179,7 +179,7 @@ export function ProjectsShowcase() {
           className="text-center max-w-2xl mx-auto mb-16"
         >
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Latest <span className="gradient-text">Project</span>
+            Latest <span className="gradient-text">Projects</span>
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
             Showcasing our latest successes and digital transformations.

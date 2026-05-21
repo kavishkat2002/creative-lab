@@ -21,7 +21,7 @@ import Contact from "./pages/Contact";
 import Auth from "./pages/Auth";
 import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
-import IslandEdge from "./pages/IslandEdge";
+import CreativeMedia from "./pages/CreativeMedia";
 
 const queryClient = new QueryClient();
 
@@ -47,7 +47,7 @@ function AnimatedRoutes() {
         <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
         <Route path="/auth" element={<PageTransition><Auth /></PageTransition>} />
         <Route path="/admin" element={<PageTransition><Admin /></PageTransition>} />
-        <Route path="/islandedge" element={<PageTransition><IslandEdge /></PageTransition>} />
+        <Route path="/creative-media" element={<PageTransition><CreativeMedia /></PageTransition>} />
         <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
       </Routes>
     </AnimatePresence>

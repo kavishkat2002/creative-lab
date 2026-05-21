@@ -28,10 +28,10 @@ const clients = [
     ),
   },
   {
-    name: "IslandEdge",
+    name: "CreativeMedia",
     logo: (
       <div className="flex items-center justify-center h-full w-full opacity-70 hover:opacity-100 transition-all duration-300 grayscale hover:grayscale-0 p-4">
-        <img src="/islandedge-logo.png" alt="IslandEdge" className="h-10 md:h-12 w-auto object-contain" />
+        <img src="/creative-media-logo.png" alt="Creative Media" className="h-10 md:h-12 w-auto object-contain" />
       </div>
     ),
   },
@@ -61,14 +61,7 @@ const clients = [
       </div>
     ),
   },
-  {
-    name: "USCarSales",
-    logo: (
-      <div className="flex items-center justify-center h-full w-full opacity-70 hover:opacity-100 transition-all duration-300 grayscale hover:grayscale-0 p-4">
-        <img src="/us-car-sales-logo.png" alt="US Car Sales" className="h-16 md:h-20 w-auto object-contain" />
-      </div>
-    ),
-  },
+
   {
     name: "JohnstonPrams",
     logo: (

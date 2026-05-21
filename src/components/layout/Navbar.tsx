@@ -11,7 +11,7 @@ const navLinks = [
   { href: "/", label: "Home" },
   { href: "/services", label: "Services" },
   { href: "/projects", label: "Portfolio" },
-  { href: "/islandedge", label: "IslandEdge" },
+  { href: "/creative-media", label: "Creative Media" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];

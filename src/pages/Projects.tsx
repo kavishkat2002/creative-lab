@@ -191,16 +191,32 @@ const Projects = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-center max-w-3xl mx-auto mb-16"
+            className="text-center max-w-3xl mx-auto mb-16 flex flex-col items-center justify-center"
           >
             <p className="text-sky font-bold text-xs uppercase tracking-widest mb-3">Our Portfolio</p>
             <h1 className="font-display text-4xl md:text-6xl font-bold mb-6 text-foreground">
               Selected <span className="gradient-text">Works</span>
             </h1>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Explore our diverse range of projects, from web applications and brand identities
-              to digital marketing campaigns.
+              Explore our diverse range of projects, from web applications and custom software
+              to enterprise-scale digital platforms.
             </p>
+
+            {/* Meta Tech Provider Badge */}
+            <Link to="/projects/meta-tech-provider">
+              <motion.div 
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ delay: 0.1 }}
+                className="mt-6 hover:scale-105 transition-transform duration-300 cursor-pointer"
+              >
+                <img 
+                  src="/meta-tech-provider-badge.png" 
+                  alt="Meta Tech Provider" 
+                  className="h-12 md:h-16 w-auto object-contain rounded-2xl shadow-lg border border-white/5"
+                />
+              </motion.div>
+            </Link>
           </motion.div>
 
           {/* Filter Categories */}

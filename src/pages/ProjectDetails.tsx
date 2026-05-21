@@ -24,6 +24,100 @@ interface Project {
     created_at: string;
 }
 
+const renderContent = (text: string | undefined) => {
+    if (!text) return null;
+
+    // Check if the text has our custom list structure: e.g. containing emojis with dashes/colons.
+    const emojiPattern = /(\p{Emoji_Presentation})/gu;
+    const parts = text.split(emojiPattern);
+
+    if (parts.length > 1) {
+        const intro = parts[0].trim();
+        const listItems: { emoji: string; content: string }[] = [];
+        
+        for (let i = 1; i < parts.length; i += 2) {
+            const emoji = parts[i];
+            let content = parts[i + 1] || "";
+            listItems.push({ emoji, content });
+        }
+
+        // Clean up the last item if it has trailing paragraphs/conclusion text
+        let conclusion = "";
+        if (listItems.length > 0) {
+            const lastItem = listItems[listItems.length - 1];
+            // Split by ")" if it is followed by a capitalized sentence, or period, or a space followed by a capitalized sentence starter
+            const match = lastItem.content.match(/(.*?\))\s+([A-Z].*)/s) || 
+                          lastItem.content.match(/(.*?\.)\s+([A-Z].*)/s) ||
+                          lastItem.content.match(/(.*?[a-z0-9])\s+((?:The|This|Our|We|With|All|It|Everything|Every|System|They|In|As|By|For|To|At|Each|Your|These)\b.*)/s);
+            if (match) {
+                lastItem.content = match[1];
+                conclusion = match[2];
+            }
+        }
+
+        // Clean up leading/trailing spaces and commas
+        listItems.forEach(item => {
+            item.content = item.content.trim().replace(/,\s*$/, '').replace(/\s*,\s*$/, '').trim();
+        });
+
+        return (
+            <div className="space-y-4">
+                {intro && <p className="mb-4">{intro}</p>}
+                <ul className="space-y-4 my-4 pl-1">
+                    {listItems.map((item, idx) => {
+                        // Look for a dash or colon separating the bullet point title from description
+                        const dashIndex = item.content.indexOf('–') !== -1 ? item.content.indexOf('–') : item.content.indexOf('-');
+                        if (dashIndex !== -1) {
+                            const title = item.content.substring(0, dashIndex).trim();
+                            const desc = item.content.substring(dashIndex + 1).trim();
+                            return (
+                                <li key={idx} className="flex items-start gap-3 text-base md:text-lg">
+                                    <span className="text-xl shrink-0 mt-0.5">{item.emoji}</span>
+                                    <span>
+                                        <strong className="text-foreground font-semibold">{title}</strong>
+                                        {desc && <span className="text-muted-foreground"> – {desc}</span>}
+                                    </span>
+                                </li>
+                            );
+                        }
+                        return (
+                            <li key={idx} className="flex items-start gap-3 text-base md:text-lg">
+                                <span className="text-xl shrink-0 mt-0.5">{item.emoji}</span>
+                                <span className="text-muted-foreground">{item.content}</span>
+                            </li>
+                        );
+                    })}
+                </ul>
+                {conclusion && <p className="mt-4">{conclusion}</p>}
+            </div>
+        );
+    }
+
+    // Default: split by double newlines to make paragraphs
+    return text.split('\n\n').map((para, i) => (
+        <p key={i} className="mb-4 last:mb-0">{para}</p>
+    ));
+};
+
+const STATIC_PROJECTS: Record<string, Project> = {
+  "meta-tech-provider": {
+    id: "meta-tech-provider",
+    title: "Meta Tech Provider",
+    category: "Partnership & Certification",
+    description: "CreativeX Technology is recognized as a Meta Tech Provider, offering hyper-optimized Facebook & Instagram advertising tech integrations, marketing API setups, and data-driven targeting strategies.",
+    image_url: "/meta-tech-provider-badge.png",
+    challenge: "Developing and maintaining advanced API integrations with Meta's ad platforms to support enterprise clients.",
+    solution: "Built a robust, direct API connection and data pipelines with Meta Business Manager to automate campaigns, track conversions with pixel/conversion APIs, and optimize performance.",
+    results: [
+      "Certified Meta Tech Provider",
+      "Direct Conversion API integrations",
+      "Enhanced tracking accuracy by 40%",
+      "Faster campaign automation"
+    ],
+    created_at: "2026-05-22T00:00:00.000Z",
+  }
+};
+
 const ProjectDetails = () => {
     const { id } = useParams<{ id: string }>();
     const [project, setProject] = useState<Project | null>(null);
@@ -36,6 +130,11 @@ const ProjectDetails = () => {
     }, [id]);
 
     const fetchProject = async (projectId: string) => {
+        if (STATIC_PROJECTS[projectId]) {
+            setProject(STATIC_PROJECTS[projectId]);
+            setIsLoading(false);
+            return;
+        }
         try {
             const { data, error } = await supabase
                 .from("projects")
@@ -178,7 +277,7 @@ const ProjectDetails = () => {
                                         The Challenge
                                     </h2>
                                     <div className="prose prose-invert max-w-none text-muted-foreground leading-relaxed text-lg">
-                                        <p>{project.challenge}</p>
+                                        {renderContent(project.challenge)}
                                     </div>
                                 </section>
                             )}
@@ -190,7 +289,7 @@ const ProjectDetails = () => {
                                         Our Solution
                                     </h2>
                                     <div className="prose prose-invert max-w-none text-muted-foreground leading-relaxed text-lg">
-                                        <p>{project.solution}</p>
+                                        {renderContent(project.solution)}
                                     </div>
                                 </section>
                             )}
