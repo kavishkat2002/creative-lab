@@ -22,12 +22,8 @@ import Auth from "./pages/Auth";
 import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
 import CreativeMedia from "./pages/CreativeMedia";
-import Maintenance from "./pages/Maintenance";
 
 const queryClient = new QueryClient();
-
-// Set to false when ready to restore normal website
-const MAINTENANCE_MODE = true;
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -90,26 +86,6 @@ const App = () => {
       document.body.style.overflowX = '';
     };
   }, []);
-
-  // Maintenance mode active
-  if (MAINTENANCE_MODE) {
-    return (
-      <HelmetProvider>
-        <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-          <TooltipProvider>
-            <div className="overflow-x-hidden w-full min-h-screen">
-              <AnimatePresence mode="wait">
-                {isLoading && <LoadingScreen key="loading-screen" />}
-              </AnimatePresence>
-              <Sonner />
-              <Toaster />
-              <Maintenance />
-            </div>
-          </TooltipProvider>
-        </ThemeProvider>
-      </HelmetProvider>
-    );
-  }
 
   return (
     <HelmetProvider>
