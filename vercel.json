@@ -2,5 +2,5 @@
   "version": 2,
   "installCommand": "cd Company/CreativeX-Technology-AI && npm install",
   "buildCommand": "cd Company/CreativeX-Technology-AI && npm run build",
-  "outputDirectory": "Company/CreativeX-Technology-AI/build"
+  "outputDirectory": "Company/CreativeX-Technology-AI/.next"
 }
